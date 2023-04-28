@@ -4,7 +4,7 @@ function Error() {
  
   return (
     <>
-     <Header class='black_bg' />
+     <Header class_bg='black_bg' />
     <div className="error_section">
         <img src={require("../image/error.png")} alt="" />
     </div>

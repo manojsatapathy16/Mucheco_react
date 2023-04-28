@@ -1,5 +1,6 @@
 
-const BASE_URL = 'http://88.208.224.110/mucheco2023api';
+const BASE_URL = 'http://88.208.224.110/mucheco_react/admin';
+export const basename='/mucheco_react/';
 
 export const API = {
     PORTFOLIO: BASE_URL + '/api/portfolio.php',

@@ -120,11 +120,11 @@ function Footer() {
                 <div className="row">
                     <div className="col-md-5">
                         <ul className="social-link">
-                            <li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#"><i className="fab fa-instagram"></i></a></li>
-                            <li><a href="#"><i className="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i className="fab fa-linkedin"></i></a></li>
-                            <li><a href="#"><i className='fab fa-youtube'></i></a></li>
+                            <li><a href="https://www.facebook.com/muchecodotcom" target='_blank'><i className="fab fa-facebook-f"></i></a></li>
+                            {/* <li><a href="#"><i className="fab fa-instagram"></i></a></li> */}
+                            <li><a href="https://twitter.com/muchecodotcom" target='_blank'><i className="fab fa-twitter"></i></a></li>
+                            <li><a href="https://www.linkedin.com/company/mucheco" target='_blank'><i className="fab fa-linkedin"></i></a></li>
+                            <li><a href="https://www.youtube.com/c/muchecodotcom" target='_blank'><i className='fab fa-youtube'></i></a></li>
                             
                         </ul>
                     </div>
@@ -145,7 +145,7 @@ function Footer() {
                 Copyright © 2023 mucheco</p>
             </div>
         </div>
-        {isScroll?(<botton className='scrollToTop' onClick={scrollToTop}>scroll to top</botton>):(null)}
+        {isScroll?(<button className='scrollToTop' onClick={scrollToTop}>scroll to top</button>):(null)}
         
     </footer>
     {/* <!--====== End Footer ======--> */}

@@ -1,22 +1,26 @@
-import { React } from 'react';
+// import { React } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import BreadCrumbs from '../components/BreadCrumbs';
 
 
 function Header(props) {
-
+    const [ spinner, setSpinner ] = useState(true);
+    useEffect(() => {
+        setTimeout(() => setSpinner(false), 1000)
+      }, []);
 
 
 
     return (
         <>
             {/* <!--====== Start Preloader ======--> */}
-            <div classNameN="preloader">
+            {spinner && <div className="preloader">
                 <div className="loader">
                     <div className="pre-shadow"></div>
                     <div className="pre-box"></div>
                 </div>
-            </div>
+            </div>}
             {/* <!--====== End Preloader ======--> */}
             {/* <!--====== Search From ======--> */}
             <div className="modal fade" id="search-modal">
@@ -36,7 +40,7 @@ function Header(props) {
             <header className="theme-header">
 
                 {/* <!-- header Navigation --> */}
-                <div className={`header-navigation index-header-navigation ${props.class}`}>
+                <div className={`header-navigation index-header-navigation ${props.class_bg}`}>
                     <div className="container">
                         <div className="primary-menu">
                             <div className="site-branding">
@@ -143,7 +147,7 @@ function Header(props) {
             </header>
             {/* <!--====== End Header Section ======--> */}
             {/* hero section start */}
-            <BreadCrumbs />
+            {(props.class=='black_bg')?<BreadCrumbs />:null}
             {/* hero section end */}
         </>
     );

@@ -47,8 +47,8 @@ function Portfolio(props) {
             .catch(error => console.log('error', error));
     }
     // var searchkey = portfolioFilterdData?.data[0]?.search_key;
-    console.log(portfolio_lang);
-    console.log(allPortfolioData);
+    // console.log(portfolio_lang);
+    // console.log(allPortfolioData);
 
 
 
@@ -69,7 +69,7 @@ function Portfolio(props) {
     return (
         <>
             <div className="inner_pages_wrapper">
-                <Header class='black_bg'/>
+                <Header class_bg='black_bg'/>
                 <Loader show={loading} />
                 <Helmet>
                 <title>mucheco</title>
@@ -77,63 +77,63 @@ function Portfolio(props) {
                 <meta name="keywords" content="HTML, CSS, JavaScript"/>
             </Helmet>
                 {/* <!--====== Start portfolio Section ======--> */}
-                <section class="portfolio-area pt-80 pb-70" id="masonry-portfolio">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-7">
-                                <div class="section-title text-center mb-50">
-                                    <span class="sub-title sub-title-bg blue-light-bg">OUR PORTFOLIO</span>
-                                    <h2 class="">2563+ Successful Projects<br />
+                <section className="portfolio-area pt-80 pb-70" id="masonry-portfolio">
+                    <div className="container">
+                        <div className="row justify-content-center">
+                            <div className="col-lg-7">
+                                <div className="section-title text-center mb-50">
+                                    <span className="sub-title sub-title-bg blue-light-bg">OUR PORTFOLIO</span>
+                                    <h2 className="">2563+ Successful Projects<br />
                                         Explore Our Work</h2>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="portfolio-filter-wrap">
-                                <div class="portfolio-filter-button text-center wow" style={{ visibility: 'visible', animationName: 'fadeInUp' }}>
-                                    <ul class="filter-btn">
+                        <div className="row">
+                            <div className="portfolio-filter-wrap">
+                                <div className="portfolio-filter-button text-center wow" style={{ visibility: 'visible', animationName: 'fadeInUp' }}>
+                                    <ul className="filter-btn">
                                         {Array.isArray(portfolio_lang) ? <>
-                                            {portfolio_lang?.map(each => <li onClick={() => setClickedLang(each)} className={each == clickedLang ? 'active' : null}>{each}</li>)}
+                                            {portfolio_lang?.map((each,key) => <li key={key} onClick={() => setClickedLang(each)} className={each == clickedLang ? 'active' : null}>{each}</li>)}
                                         </> : null}
 
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="row masonry-row" style={{ position: 'relative' }}>
+                        <div className="row masonry-row" style={{ position: 'relative' }}>
                             {Array.isArray(allPortfolioData?.data) ? <>
-                                {allPortfolioData?.data.map(each => {
+                                {allPortfolioData?.data.map((each,key) => {
                                     if(clickedLang===each?.search_key)
                                     {
                                         return (
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                                <div class="portfolio-block-five mb-50 wow fadeInUp">
-                                                    <div class="portfolio-img">
+                                            <div className="col-lg-4 col-md-6 col-sm-12" key={key}>
+                                                <div className="portfolio-block-five mb-50 wow fadeInUp">
+                                                    <div className="portfolio-img">
                                                         <img src={each?.image} alt="project Image" />
                                                         <div className="portfolio-img-overlay" onClick={() => { showFullImageHandle(each?.image) }}>
-                                                            <span><i class="far fa-plus"></i></span>
+                                                            <span><i className="far fa-plus"></i></span>
                                                         </div>
                                                     </div>
-                                                    <div class="portfolio-content">
-                                                        <h3 class="title"><a href="project-details.html" class="">{each?.site_name}</a></h3>
-                                                        <a href="project-details.html" class="cat-btn">{each?.language}</a>
+                                                    <div className="portfolio-content">
+                                                        <h3 className="title"><a href="project-details.html" className="">{each?.site_name}</a></h3>
+                                                        <a href="project-details.html" className="cat-btn">{each?.language}</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         )
                                     }else if(clickedLang==='All'){
                                         return (
-                                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                                <div class="portfolio-block-five mb-50 wow fadeInUp">
-                                                    <div class="portfolio-img">
+                                            <div className="col-lg-4 col-md-6 col-sm-12">
+                                                <div className="portfolio-block-five mb-50 wow fadeInUp">
+                                                    <div className="portfolio-img">
                                                         <img src={each?.image} alt="project Image" />
                                                         <div className="portfolio-img-overlay" onClick={() => { showFullImageHandle(each?.image) }}>
-                                                            <span><i class="far fa-plus"></i></span>
+                                                            <span><i className="far fa-plus"></i></span>
                                                         </div>
                                                     </div>
-                                                    <div class="portfolio-content">
-                                                        <h3 class="title"><a href="project-details.html" class="">{each?.site_name}</a></h3>
-                                                        <a href="project-details.html" class="cat-btn">{each?.language}</a>
+                                                    <div className="portfolio-content">
+                                                        <h3 className="title"><a href="project-details.html" className="">{each?.site_name}</a></h3>
+                                                        <a href="project-details.html" className="cat-btn">{each?.language}</a>
                                                     </div>
                                                 </div>
                                             </div>

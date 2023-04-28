@@ -5,7 +5,7 @@ function Service() {
   return (
     <>
      <div className="inner_pages_wrapper">
-    <Header class='black_bg' />
+    <Header class_bg='black_bg' />
     Service
      </div>
     

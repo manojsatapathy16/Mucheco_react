@@ -42,7 +42,7 @@ function Insight_details(props) {
     return (
         <>
             <div className="inner_pages_wrapper">
-                <Header class='black_bg' />
+                <Header class_bg='black_bg' />
 
                 <Loader show={loading} />
                 <Helmet>

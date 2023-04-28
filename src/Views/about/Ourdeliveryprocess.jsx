@@ -8,7 +8,7 @@ function Ourdeliveryprocess() {
   return (
     <>
      <div className="inner_pages_wrapper">
-    <Header class='black_bg' />
+    <Header class_bg='black_bg' />
     <Helmet>
                 <title>mucheco</title>
                 <meta name="description" content="Helmet application" />
@@ -223,7 +223,7 @@ function Ourdeliveryprocess() {
             </div>
             {/* <!-- Slider --> */}
             <div id="our_work_process">
-            <OwlCarousel className='owl-theme' items={3} loop margin={10} nav>
+            <OwlCarousel className='owl-theme' items={3} loop margin={10} nav autoplay ={true}>
                 <div className="item">
                     <div className="pt-fancybox-boxslider fancyslider-2 ">
                         <div className="pt-fancy-media"><img src={require("../../image/project_planning.png")} alt=""/>

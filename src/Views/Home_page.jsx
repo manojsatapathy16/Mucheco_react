@@ -40,11 +40,11 @@ const post_blog=[{post_img:'latest_news1.jpg',post_date:' 08 Feb 2023',post_name
             </Helmet>
    <section className="hero-area">
         <div className="hero-wrapper-one hero-slider-one slick-initialized slick-slider slick-dotted slick-vertical">
-            <div className="slick-list draggable" style={{height: '819px'}}>
+            <div className="slick-list draggable" >
                 <div className="slick-track">
                     <div className="single-slider bg_cover slick-slide slick-current slick-active"
                         style={{backgroundImage: `url(${bannerimage})`}} data-slick-index="2"
-                        aria-hidden="false" tabindex="0" role="tabpanel" id="slick-slide02"
+                        aria-hidden="false" tabIndex="0" role="tabpanel" id="slick-slide02"
                         aria-describedby="slick-slide-control02">
                         <div className="container">
                             <div className="row">
@@ -162,7 +162,7 @@ const post_blog=[{post_img:'latest_news1.jpg',post_date:' 08 Feb 2023',post_name
             </div>
             {/* <!-- Slider --> */}
             <div className="" id="case_studyy">
-            <OwlCarousel className='owl-theme' items={3} loop margin={10} nav>
+            <OwlCarousel className='owl-theme' items={3} loop margin={10} nav autoplay ={true}>
                 <div className="item">
                     <img src={require("../image/case-study/uk_pallet.jpg")} alt="" width="100%" />
                     <div className="case_img_overtxt">
@@ -297,7 +297,7 @@ const post_blog=[{post_img:'latest_news1.jpg',post_date:' 08 Feb 2023',post_name
             </div>
             {/* <!-- Slider --> */}
             <div className="" id="portfolioo">
-            <OwlCarousel className='owl-theme' items={2} loop margin={10} nav>
+            <OwlCarousel className='owl-theme' items={2} loop margin={10} nav autoplay ={true}>
                 <div className="item">
                     <div className="testimonial-item">
                         <div className="item-content basic">
@@ -392,15 +392,15 @@ const post_blog=[{post_img:'latest_news1.jpg',post_date:' 08 Feb 2023',post_name
             </div>
             {/* <!-- Slider --> */}
             <div className="" id="news_blog">
-            <OwlCarousel className='owl-theme' items={3} loop margin={10} nav>
-            {post_blog.map(each=>{
+            <OwlCarousel className='owl-theme' items={3} loop margin={10} nav autoplay ={true}>
+            {post_blog.map((each,key)=>{
                 return(                  
-                <div className="item">
+                <div className="item" key={key}>
                 <div className="blog-inner-wrap ">
                     <div className="image-wrap">
                         <a className="pointer-events"
                             href="#"
-                            tabindex="0">
+                            tabIndex="0">
                             <img src={require(`../image/${each.post_img}`)}
                                 className="post-image"
                                 alt="" /> </a>
@@ -448,9 +448,9 @@ const post_blog=[{post_img:'latest_news1.jpg',post_date:' 08 Feb 2023',post_name
                         </div>
                     </div>
                     <div className="brands">
-                        {brands.map(each=>{
+                        {brands.map((each,key)=>{
                             return(
-                            <div className="brand">
+                            <div className="brand" key={key}>
                             <img src={require(`../image/${each}`)} alt="" />
                         </div>)
                         })}

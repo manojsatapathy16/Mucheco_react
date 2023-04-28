@@ -16,12 +16,13 @@ import ServiceDetails from '../Views/ServiceDetails';
 import Contact from '../Views/Contact';
 import CaseStudy_Details from '../Views/about/CaseStudy_Details';
 import Insight_details from '../Views/Insight_details';
+import {basename} from '../Services/Apis';
 
 function Router_app() {
  
   return (
     <>
-    <BrowserRouter basename='/mucheco_react/'>
+    <BrowserRouter basename={basename}>
     <Routes>
         <Route path='/' element={<Home_page />} />
         <Route path='/about' element={<About />} />
