@@ -9,9 +9,6 @@ function WhychooseUs() {
     <>
      <div className="inner_pages_wrapper">
     <Header class_bg='black_bg' />
-    <img src={require("./logo-1.png")} alt="Site Logo" />
-   
-    {/* hiiiii */}
     <Helmet>
                 <title>mucheco</title>
                 <meta name="description" content="Helmet application" />
