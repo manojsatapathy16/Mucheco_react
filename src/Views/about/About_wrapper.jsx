@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './Header';
+import Header from '../Header';
 import { Outlet } from 'react-router-dom';
-function Service() {
+function About_wrapper() {
  
   return (
     <>
@@ -11,4 +11,4 @@ function Service() {
     );
 }
 
-export default Service;
+export default About_wrapper;

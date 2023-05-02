@@ -11,6 +11,8 @@ import './css/aos.css'
 
 import './js/carousel_define.js';
 import Router_app from './Routing/Router_app';
+import { BrowserRouter } from 'react-router-dom';
+import { basename } from './Services/Apis';
 
 
 
@@ -19,8 +21,12 @@ function App() {
   useEffect(() => {
     AOS.init();
   }, [])
-  return <Router_app />
+  return  <Router_app />
+ 
 
+{/* <BrowserRouter basename={basename}>
+<Router_app />
+  </BrowserRouter> */}
 
 }
 

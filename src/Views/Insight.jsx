@@ -25,7 +25,7 @@ function Insight() {
     const getLoginStatus = () => {
         setIsLogin(compairData);
     }
-    
+
 
 
 
@@ -46,10 +46,10 @@ function Insight() {
     // console.log(insightData.data[0]);
 
 
-const readmoreHandler = (e) =>{
-    const clickedId=e.target.id;
-    navigate('/insight/insight-details',{state:{id:clickedId}});
-}
+    const readmoreHandler = (e) => {
+        const clickedId = e.target.id;
+        navigate('/insight/insight-details', { state: { id: clickedId } });
+    }
 
 
 
@@ -59,7 +59,7 @@ const readmoreHandler = (e) =>{
             <Helmet>
                 <title>Insight</title>
                 <meta name="description" content="Helmet application" />
-                <meta name="keywords" content="HTML, CSS, JavaScript"/>
+                <meta name="keywords" content="HTML, CSS, JavaScript" />
             </Helmet>
             <div className="inner_pages_wrapper">
                 <Header class_bg='black_bg' />
@@ -71,17 +71,17 @@ const readmoreHandler = (e) =>{
                             <div className="col-xl-8 col-lg-7">
                                 <div className="blog-standard-wrapper">
                                     {Array.isArray(insightData?.data) ? <>
-                                        {insightData?.data.map((each,key) => {
+                                        {insightData?.data.map((each, key) => {
 
                                             return (
                                                 <div className="blog-post-item mb-50 wow fadeInUp" data-wow-delay=".2s" key={key} id={each.id}>
                                                     {(each.media == '') ? (<div className="post-thumbnail">
-                                                    {each?.media ? <img src={each.media} alt="blog image" />:null}
+                                                        {each?.media ? <img src={each.media} alt="blog image" /> : null}
                                                         <div className="play-content">
                                                             <a href={each.media_link} className="video-popup"><i className="fas fa-play"></i></a>
                                                         </div>
                                                     </div>) : (<div className="post-thumbnail">
-                                                    {each?.media ? <img src={each.media} alt="blog image" />:null}
+                                                        {each?.media ? <img src={each.media} alt="blog image" /> : null}
                                                     </div>)}
 
                                                     <div className="entry-content">
@@ -92,8 +92,8 @@ const readmoreHandler = (e) =>{
 
                                                             </ul>
                                                         </div>
-                                                        {each?.title ?<h3 className="title"><a href="blog-details.html" dangerouslySetInnerHTML={{ __html: each.title }}></a></h3>:null}
-                                                        {each?.short_description ?<p dangerouslySetInnerHTML={{ __html: each.short_description }}></p>:null}
+                                                        {each?.title ? <h3 className="title"><a href="blog-details.html" dangerouslySetInnerHTML={{ __html: each.title }}></a></h3> : null}
+                                                        {each?.short_description ? <p dangerouslySetInnerHTML={{ __html: each.short_description }}></p> : null}
                                                         <span href="" onClick={readmoreHandler} id={each.id} className="main-btn filled-btn">Read More</span>
                                                     </div>
                                                 </div>

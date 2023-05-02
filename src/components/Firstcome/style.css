@@ -44,9 +44,9 @@
     z-index: 999;
 }
 .login_modal form {
-    width: 400px;
+    width: 450px;
     background: #fff;
-    border-radius: 10px;
+
     padding: 30px;
     position: relative;
   }
@@ -73,7 +73,7 @@
     border:none;
     cursor: pointer;
   }
-  .close_btn{
+  .login_modal .close_btn{
     position: absolute;
     right: 20px;
     top: 20px;
@@ -81,8 +81,32 @@
     background: unset;
     border: none;
     cursor: pointer;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    background: #db1c00;
+    color: #fff;
+    border-radius: 3px;
   }
   .welcome_message{
     font-size: 18px;
     color: #fff;
+  }
+  .firstcomeimg {
+    
+  
+    overflow: hidden;
+  }
+  .firstcomeimg img {
+    height: 100%;
+    object-fit: cover;
+  }
+  .firstcome_wrapper {
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .firstcome_wrapper textarea {
+    width: 100%;
+    padding: 10px;
   }

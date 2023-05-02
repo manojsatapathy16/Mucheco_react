@@ -1,7 +1,9 @@
 // import { React } from 'react';
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import BreadCrumbs from '../components/BreadCrumbs';
+import { Image } from '../Constants/ImagePaths';
+import Firstcome from '../components/Firstcome';
 
 
 function Header(props) {
@@ -10,8 +12,8 @@ function Header(props) {
         setTimeout(() => setSpinner(false), 1000)
       }, []);
 
-
-
+// const logo="http://88.208.224.110/mucheco_react/admin/assets/img/logo.png"
+// console.log('header..........',props);
     return (
         <>
             {/* <!--====== Start Preloader ======--> */}
@@ -22,6 +24,7 @@ function Header(props) {
                 </div>
             </div>}
             {/* <!--====== End Preloader ======--> */}
+            <Firstcome />
             {/* <!--====== Search From ======--> */}
             <div className="modal fade" id="search-modal">
                 <div className="modal-dialog modal-dialog-centered" role="document">
@@ -45,7 +48,8 @@ function Header(props) {
                         <div className="primary-menu">
                             <div className="site-branding">
                                 <NavLink to='/' className="brand-logo">
-                                    <img src={require("../image/logo-1.png")} alt="Site Logo" />
+                                    <img src={Image.logo1} alt="Site Logo" />
+                                    {/* <img src={require("../image/logo-1.png")} alt="Site Logo" /> */}
                                 </NavLink>
                             </div>
                             <div className="nav-menu">
@@ -64,7 +68,7 @@ function Header(props) {
                                 {/* <!-- Main Menu --> */}
                                 <nav className="main-menu">
                                     <ul>
-                                        <li className="menu-item has-children"><NavLink to='/About'>About us</NavLink>
+                                        <li className="menu-item has-children"><NavLink to='/about'>About us</NavLink>
                                             <ul className="sub-menu sub-menu_about">
                                                 <li><NavLink to='/about/why-choose-us'><img src={require("../image/menu_icons/choose-us.png")} alt="" /> Why Choose Us</NavLink></li>
                                                 <li><NavLink to='/about/our-delivery-process'><img src={require("../image/menu_icons/about.png")} alt="" /> Our Delivery Process</NavLink></li>
@@ -147,8 +151,10 @@ function Header(props) {
             </header>
             {/* <!--====== End Header Section ======--> */}
             {/* hero section start */}
-            {(props.class=='black_bg')?<BreadCrumbs />:null}
+          
+            {(props.class_bg=='black_bg')?<BreadCrumbs />:null}
             {/* hero section end */}
+            <Outlet/>
         </>
     );
 }

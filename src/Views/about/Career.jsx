@@ -189,12 +189,12 @@ function Career() {
                 <div className="no_vacancy">
                     <img src={require("../../image/career/no_vacancy.png")} alt=""/>
                 </div>
-                {/* <!-- <div className="open_vacancy">
+                 {/* <div className="open_vacancy">
                 <div className="row">
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="400">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt="">
+                                <img src="image/icon-3.png" alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -208,7 +208,7 @@ function Career() {
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="600">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt="">
+                                <img src="image/icon-3.png" alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -222,7 +222,7 @@ function Career() {
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="800">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt="">
+                                <img src="image/icon-3.png" alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -236,7 +236,7 @@ function Career() {
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="1000">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt="">
+                                <img src="image/icon-3.png" alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -250,7 +250,7 @@ function Career() {
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="1200">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt="">
+                                <img src="image/icon-3.png" alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -264,7 +264,7 @@ function Career() {
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="1400">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt="">
+                                <img src="image/icon-3.png" alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -278,7 +278,7 @@ function Career() {
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="1600">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt="">
+                                <img src="image/icon-3.png" alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -292,7 +292,7 @@ function Career() {
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".9s" style="visibility: visible; animation-delay: 0.9s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="1800">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt="">
+                                <img src="image/icon-3.png" alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -311,7 +311,7 @@ function Career() {
                         </div>
                     </div>
                 </div>
-            </div> --> */}
+            </div>  */}
             </div>
         </section>
         {/* <!--====== End Job Section ======--> */}

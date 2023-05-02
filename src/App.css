@@ -927,3 +927,32 @@ margin-bottom: 10px;
 text-transform: capitalize;
 }
 
+/* all terms and condition pages */
+.some_policys li{
+  margin-top: 15px;
+padding-left: 40px;
+position: relative;
+line-height: 23px;
+}
+.some_policys li::before {
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+  font-weight: 600;
+  position: absolute;
+left: 0;
+top: 0px;
+display: inline-flex;
+margin-right: 13px;
+width: 25px;
+height: 25px;
+border-radius: 50%;
+align-items: center;
+justify-content: center;
+background-color: var(--purple-blue);
+color: #fff;
+content: '\f00c';
+font-weight: 600;
+font-family: 'Font Awesome 5 Pro';
+}
+

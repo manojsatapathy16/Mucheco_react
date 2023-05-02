@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import AdminLogin from '../components/AdminLogin';
+import Firstcome from '../components/Firstcome';
 
 function Footer() {
+    const date = new Date().getFullYear();
     const[isScroll,setIsScroll]=useState(false);
     window.addEventListener("scroll", (event) => {
         let scroll = window.scrollY;
@@ -17,6 +18,7 @@ function Footer() {
     function scrollToTop() {
         window.scrollTo({top: 0, behavior: 'smooth'});
         }
+ 
  
   return (
     <>
@@ -74,11 +76,11 @@ function Footer() {
                             <h4 className="widget-title">About Us</h4>
                             <ul className="footer-nav list-style-dot">
                                 <li><a href="/about/why-choose-us"> Why Choose Us</a></li>
-                                        <li><a href="/about/our-delivery-process"> Our Delivery Process</a></li>
-                                        <li><a href="/about/some-of-our-work"> Some of Our Work</a></li>
-                                        <li><a href="/about/case-study"> Case Study</a></li>
-                                        <li><a href="/about/career"> Career</a></li>
-                                        <li><a href="#"> FAQ</a></li>
+                                        <li><NavLink to="/about/our-delivery-process"> Our Delivery Process</NavLink></li>
+                                        <li><NavLink to="/about/some-of-our-work"> Some of Our Work</NavLink></li>
+                                        <li><NavLink to="/about/case-study"> Case Study</NavLink></li>
+                                        <li><NavLink to="/about/career"> Career</NavLink></li>
+                                        <li><NavLink to="/faq"> FAQ</NavLink></li>
                             </ul>
                         </div>
                     </div>
@@ -130,11 +132,11 @@ function Footer() {
                     </div>
                     <div className="col-md-7">
                         <ul className="imp-link float-md-right float-sm-none">
-                            <li> <AdminLogin/></li>
-                            <li><a href="">Privacy Policy</a></li>
-                            <li><a href="">Terms of Use</a></li>
-                            <li><a href="">Support Policy </a></li>
-                            <li><a href="">Terms of Service </a></li>
+                            
+                            <li><NavLink to="/privacy-policy">Privacy Policy</NavLink></li>
+                            <li><NavLink to="/terms-of-use">Terms of Use</NavLink></li>
+                            <li><NavLink to="/support-policy">Support Policy </NavLink></li>
+                            <li><NavLink to="/terms-of-service">Terms of Service </NavLink></li>
                         </ul>
                     </div>
                 </div>
@@ -142,11 +144,11 @@ function Footer() {
             <div className="footer-copyright footer-copyright-bottom">
                <p>DISCLAIMER: mucheco.com, nor its operators are affiliated with or funded by Amazon.com, Inc in any way.
 
-                Copyright © 2023 mucheco</p>
+                Copyright © {date} mucheco</p>
             </div>
         </div>
-        {isScroll?(<button className='scrollToTop' onClick={scrollToTop}>scroll to top</button>):(null)}
-        
+        {isScroll?(<span className='scrollToTop' onClick={scrollToTop}>scroll to top</span>):(null)}
+    
     </footer>
     {/* <!--====== End Footer ======--> */}
 

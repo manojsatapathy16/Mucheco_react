@@ -3,6 +3,7 @@ import Header from '../Header';
 import OwlCarousel from 'react-owl-carousel';
 import testimonial from '../../image/testimonial-bg-1.jpg';
 import { Helmet } from "react-helmet";
+import { Outlet } from 'react-router-dom';
 function WhychooseUs() {
  
   return (
@@ -355,6 +356,7 @@ function WhychooseUs() {
 </section>
     {/* <!--====== End Testimonial Section ======--> */}
     </div>
+    <Outlet />
     </>
     );
 }

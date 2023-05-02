@@ -6,6 +6,7 @@ import '../css/aos.css'
 import Header from './Header';
 import { Helmet } from "react-helmet";
 import CursorCircle from '../components/CursorCircle';
+import { Outlet } from 'react-router-dom';
 
 
 function Home_page() {
@@ -461,6 +462,7 @@ const post_blog=[{post_img:'latest_news1.jpg',post_date:' 08 Feb 2023',post_name
     </section>
     {/* <!--====== End Features Section ======--> */}
     {/* </CursorCircle> */}
+    <Outlet/>
     </>
     );
 }
