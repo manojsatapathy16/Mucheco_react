@@ -4,12 +4,12 @@ import { CallApi_Without_Token } from '../../Services/Client';
 import { API } from '../../Services/Apis';
 
 function Firstcome() {
-  const sessondata=JSON.parse(sessionStorage.getItem('notshowagain'));
+  
   const inputs={Name:'',Email:'',Phone:'',Message:''};
   const [inputData,setinputData]=useState(inputs);
   const [isModalOpen,setIsModalOpen]=useState(true);
 
-console.log(sessondata)
+// console.log(sessondata)
 const fetchInfo = async () => {
     var formdata = new FormData();
     formdata.append("first_name", inputData.Name);
@@ -20,17 +20,17 @@ const fetchInfo = async () => {
     // setLoading(false)
     if (data.status === 1) {
         setIsModalOpen(false)
-        sessionStorage.setItem('notshowagain',false);
+        sessionStorage.setItem('notshowagain',1);
     } else {
         setIsModalOpen(true)
     }
 }
-// const compairDataString = localStorage.getItem("credential");
+// const compairDataString = sessionStorage.getItem("credential");
 //   const compairData = JSON.parse(compairDataString);
 
   const modalClose = () => {
     setIsModalOpen(false);
-    sessionStorage.setItem('notshowagain',false);
+    sessionStorage.setItem('notshowagain',0);
   }
   const inputHandleChange = (e) => {
     setinputData({...inputData,[e.target.name]:e.target.value})
@@ -40,12 +40,13 @@ const fetchInfo = async () => {
     fetchInfo();
     
   }
+
   
   return (
     <>
     <div className="header">
       <div className="menu_list">
-        {(isModalOpen) && sessondata?<div className="login_modal">
+        {(isModalOpen) ?<div className="login_modal">
           <div className="firstcome_wrapper">
         <div className='firstcomeimg'>
             <img src={require("../../image/firstcome_bg.jpg")} alt="" />

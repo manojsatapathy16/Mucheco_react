@@ -6,11 +6,23 @@ import { Image } from '../Constants/ImagePaths';
 import Firstcome from '../components/Firstcome';
 
 
+
 function Header(props) {
+
+    const[sessionData,setSessionData]=useState('')
+   
+
     const [ spinner, setSpinner ] = useState(true);
     useEffect(() => {
         setTimeout(() => setSpinner(false), 1000)
+        getPopUp();
       }, []);
+
+      const getPopUp =async()=>{
+        const sessondata=await JSON.parse(sessionStorage.getItem('notshowagain'));
+        console.log(sessondata,'sessondata')
+        setSessionData(sessondata)
+      }
 
 // const logo="http://88.208.224.110/mucheco_react/admin/assets/img/logo.png"
 // console.log('header..........',props);
@@ -24,7 +36,7 @@ function Header(props) {
                 </div>
             </div>}
             {/* <!--====== End Preloader ======--> */}
-            <Firstcome />
+           {sessionData === null?<Firstcome />:''}
             {/* <!--====== Search From ======--> */}
             <div className="modal fade" id="search-modal">
                 <div className="modal-dialog modal-dialog-centered" role="document">
