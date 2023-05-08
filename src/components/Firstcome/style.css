@@ -88,6 +88,20 @@
     color: #fff;
     border-radius: 3px;
   }
+  .login_modal .close_btn span{
+    position: relative;
+    display: block;
+  }
+  .login_modal .close_btn span:after{
+    content: '\f00d';
+    font-family: 'Font Awesome 5 Pro';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 20px;
+  }
+ 
   .welcome_message{
     font-size: 18px;
     color: #fff;

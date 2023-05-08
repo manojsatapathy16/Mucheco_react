@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Firstcome from '../components/Firstcome';
 
 function Footer() {
@@ -14,6 +14,7 @@ function Footer() {
             setIsScroll(false);
         }
     });
+    
     
     function scrollToTop() {
         window.scrollTo({top: 0, behavior: 'smooth'});
@@ -42,10 +43,10 @@ function Footer() {
                         <div className="newsletter-form">
                             <form>
                                 <div className="form_group">
-                                    <button className="main-btn btn-black">Get a quote <i
-                                            className="fas fa-arrow-right"></i></button>
-                                    <button className="main-btn btn-black transparent_btn">Book a call <i
-                                            className="fas fa-arrow-right"></i></button>
+                                    <Link to='/Contact' className="main-btn btn-black">Get a quote <i
+                                            className="fas fa-arrow-right"></i></Link>
+                                    <Link to='tel:+442030049800' className="main-btn btn-black transparent_btn">Book a call <i
+                                            className="fas fa-arrow-right"></i></Link>
                                 </div>
                             </form>
                         </div>
@@ -75,7 +76,7 @@ function Footer() {
                         <div className="widget footer-nav-widget wow fadeInUp" data-aos="fade-up" data-aos-duration="500">
                             <h4 className="widget-title">About Us</h4>
                             <ul className="footer-nav list-style-dot">
-                                <li><a href="/about/why-choose-us"> Why Choose Us</a></li>
+                                <li><NavLink to="/about/why-choose-us"> Why Choose Us</NavLink></li>
                                         <li><NavLink to="/about/our-delivery-process"> Our Delivery Process</NavLink></li>
                                         <li><NavLink to="/about/some-of-our-work"> Some of Our Work</NavLink></li>
                                         <li><NavLink to="/about/case-study"> Case Study</NavLink></li>
@@ -94,8 +95,8 @@ function Footer() {
                                     <p>
                                         <span className="footer_phone"><i className="far fa-phone"></i></span>+44 20 3004 9800
                                     </p>
-                                        <p><i className="far fa-envelope"></i><span><a
-                                            href="mailto:hotline@gmail.com">sales@mucheco.com</a></span></p>
+                                        <p><i className="far fa-envelope"></i><span><Link
+                                            to="mailto:hotline@gmail.com">sales@mucheco.com</Link></span></p>
                                 </div>
                             </div>
                         </div>
@@ -110,8 +111,8 @@ function Footer() {
                                     <p>
                                         <span className="footer_phone"><i className="far fa-phone"></i></span>+1 732 931 7070
                                     </p>
-                                        <p><i className="far fa-envelope"></i><span><a
-                                            href="mailto:hotline@gmail.com">sales@mucheco.com</a></span></p>
+                                        <p><i className="far fa-envelope"></i><span><Link
+                                            to="mailto:hotline@gmail.com">sales@mucheco.com</Link></span></p>
                                 </div>
                             </div>
                         </div>
@@ -122,11 +123,11 @@ function Footer() {
                 <div className="row">
                     <div className="col-md-5">
                         <ul className="social-link">
-                            <li><a href="https://www.facebook.com/muchecodotcom" target='_blank'><i className="fab fa-facebook-f"></i></a></li>
-                            {/* <li><a href="#"><i className="fab fa-instagram"></i></a></li> */}
-                            <li><a href="https://twitter.com/muchecodotcom" target='_blank'><i className="fab fa-twitter"></i></a></li>
-                            <li><a href="https://www.linkedin.com/company/mucheco" target='_blank'><i className="fab fa-linkedin"></i></a></li>
-                            <li><a href="https://www.youtube.com/c/muchecodotcom" target='_blank'><i className='fab fa-youtube'></i></a></li>
+                            <li><Link to="https://www.facebook.com/muchecodotcom" target='_blank'><i className="fab fa-facebook-f"></i></Link></li>
+                            {/* <li><a to="#"><i className="fab fa-instagram"></i></a></li> */}
+                            <li><Link to="https://twitter.com/muchecodotcom" target='_blank'><i className="fab fa-twitter"></i></Link></li>
+                            <li><Link to="https://www.linkedin.com/company/mucheco" target='_blank'><i className="fab fa-linkedin"></i></Link></li>
+                            <li><Link to="https://www.youtube.com/c/muchecodotcom" target='_blank'><i className='fab fa-youtube'></i></Link></li>
                             
                         </ul>
                     </div>
@@ -135,8 +136,8 @@ function Footer() {
                             
                             <li><NavLink to="/privacy-policy">Privacy Policy</NavLink></li>
                             <li><NavLink to="/terms-of-use">Terms of Use</NavLink></li>
-                            <li><NavLink to="/support-policy">Support Policy </NavLink></li>
-                            <li><NavLink to="/terms-of-service">Terms of Service </NavLink></li>
+                            <li><NavLink to="/quality-policy">Quality Policy </NavLink></li>
+                            <li><NavLink to="/disclaimer">Disclaimer </NavLink></li>
                         </ul>
                     </div>
                 </div>

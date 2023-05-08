@@ -1,22 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import { getUniqueValues } from '../Utils/Utils';
-import {useLocation} from 'react-router-dom'
+import {useLocation,Link,useNavigate} from 'react-router-dom';
 import { API } from '../Services/Apis';
 import { Helmet } from "react-helmet";
 import Loader from '../components/Loader';
+import {helmet} from '../Utils/Utils';
 
 function Portfolio(props) {
+    
         let location  = useLocation();
+        const navigate = useNavigate();
+        
        
     const [loading, setLoading] = useState(false);
     const [portfolio_lang, setportfolio_lang] = useState([]);
     const [allPortfolioData, setallPortfolioData] = useState();
     const [clickedLang, setClickedLang] = useState('All');
-    useEffect(() => {
+    const[metaData,setMetaData]=useState('');
+    const api_type = props.type;
+
+
+
+
+
+   
+    useEffect( () => {
+        helmet(api_type,setMetaData);
         fetchPortfolio();
-    }, []);
+    }, [api_type])
+
     const fetchPortfolio = () => {
+        
+        
         var formdata = new FormData();
         formdata.append("request_type", "portfolio");
 
@@ -34,17 +50,24 @@ function Portfolio(props) {
                 setLoading(false)
                 let res = JSON.parse(result)
                 setallPortfolioData(res);
+                window.scrollTo({top: 0, behavior: 'smooth'});
 
 
                 let data = getUniqueValues(res)
 
                 setportfolio_lang(data)
+                
 
                 // setPortfolioAllData(JSON.parse(result))
             }
+            
 
             )
-            .catch(error => console.log('error', error));
+            
+            .catch(() => {
+                setLoading(true);
+                setTimeout(() => {navigate("/");},5000);
+            });
     }
     // var searchkey = portfolioFilterdData?.data[0]?.search_key;
     // console.log(portfolio_lang);
@@ -72,9 +95,9 @@ function Portfolio(props) {
                 <Header class_bg='black_bg'/>
                 <Loader show={loading} />
                 <Helmet>
-                <title>mucheco</title>
-                <meta name="description" content="Helmet application" />
-                <meta name="keywords" content="HTML, CSS, JavaScript"/>
+                <title>{metaData?.data?.meta_title}</title>
+                <meta name="description" content={metaData?.data?.meta_description} />
+                <meta name="keywords" content={metaData?.data?.meta_keyword} />
             </Helmet>
                 {/* <!--====== Start portfolio Section ======--> */}
                 <section className="portfolio-area pt-80 pb-70" id="masonry-portfolio">
@@ -111,12 +134,13 @@ function Portfolio(props) {
                                                     <div className="portfolio-img">
                                                         <img src={each?.image} alt="project Image" />
                                                         <div className="portfolio-img-overlay" onClick={() => { showFullImageHandle(each?.image) }}>
-                                                            <span><i className="far fa-plus"></i></span>
+                                                            <span><i class="far fa-search-plus"></i></span>
                                                         </div>
                                                     </div>
                                                     <div className="portfolio-content">
                                                         <h3 className="title"><a href="project-details.html" className="">{each?.site_name}</a></h3>
                                                         <a href="project-details.html" className="cat-btn">{each?.language}</a>
+                                                        <div><Link to={each?.site_link} className="view_project" target='_blank'>View Project <span><i class="far fa-long-arrow-right"></i></span></Link></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -128,12 +152,13 @@ function Portfolio(props) {
                                                     <div className="portfolio-img">
                                                         <img src={each?.image} alt="project Image" />
                                                         <div className="portfolio-img-overlay" onClick={() => { showFullImageHandle(each?.image) }}>
-                                                            <span><i className="far fa-plus"></i></span>
+                                                            <span><i class="far fa-search-plus"></i></span>
                                                         </div>
                                                     </div>
                                                     <div className="portfolio-content">
-                                                        <h3 className="title"><a href="project-details.html" className="">{each?.site_name}</a></h3>
-                                                        <a href="project-details.html" className="cat-btn">{each?.language}</a>
+                                                        <h3 className="title"><a href="" className="">{each?.site_name}</a></h3>
+                                                        <a href="" className="cat-btn">{each?.language}</a>
+                                                        <div><Link to={each?.site_link} className="view_project" target='_blank'>View Project <span><i class="far fa-long-arrow-right"></i></span></Link></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,9 +173,12 @@ function Portfolio(props) {
                 {/* <!--====== End portfolio Section ======--> */}
             </div>
             {(fullImgUrl) ? (<div className="image-popup">
-                <div className="cancel_img_popup" onClick={cancelFullImageHandle}><span>+</span></div>
+                <div className="image-popup-inner">
+                <div className="cancel_img_popup" onClick={cancelFullImageHandle}><span></span></div>
                 <img src={fullImgUrl} alt="" />
-            </div>) : ''}
+                </div>
+                </div>
+            ) : ''}
         </>
     );
 }

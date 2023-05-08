@@ -2,7 +2,7 @@ import Header from './Header';
 import React, { useEffect, useState } from 'react';
 import { CallApi_Without_Token } from '../Services/Client';
 import { API } from '../Services/Apis';
-function Term_of_use() {
+function Disclaimer() {
     const [privacypolicy, privacypolicyData] = useState([]);
     useEffect(() => {
 
@@ -12,7 +12,7 @@ function Term_of_use() {
     const fetchInfo = async () => {
         var formdata = new FormData();
         formdata.append("request_type", 'policy');
-        formdata.append("slug", 'terms-of-use');
+        formdata.append("slug", 'disclaimer');
         const data = await CallApi_Without_Token('POST', API.PRIVACY_POLICY, formdata)
         if (data.status === 1) {
             privacypolicyData(data)
@@ -41,4 +41,4 @@ function Term_of_use() {
                                 );
 }
 
-                                export default Term_of_use;
+                                export default Disclaimer;

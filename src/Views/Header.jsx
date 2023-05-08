@@ -1,6 +1,6 @@
 // import { React } from 'react';
 import React, { useState, useEffect } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet,useNavigate } from 'react-router-dom';
 import BreadCrumbs from '../components/BreadCrumbs';
 import { Image } from '../Constants/ImagePaths';
 import Firstcome from '../components/Firstcome';
@@ -10,9 +10,29 @@ import Firstcome from '../components/Firstcome';
 function Header(props) {
 
     const[sessionData,setSessionData]=useState('')
-   
-
     const [ spinner, setSpinner ] = useState(true);
+    const navigate = useNavigate();
+
+    // check network connection start
+    const [status, setStatus] = useState(() => {
+        if (navigator.onLine) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      useEffect(() => {
+        window.ononline = (e) => {
+          setStatus(true);
+        };
+        window.onoffline = (e) => {
+          alert("Network connection lost.Please once check your connection.");
+          setStatus(false);
+          navigate("/");
+        };
+      }, [status]);
+// check network connection end
+
     useEffect(() => {
         setTimeout(() => setSpinner(false), 1000)
         getPopUp();
@@ -20,12 +40,9 @@ function Header(props) {
 
       const getPopUp =async()=>{
         const sessondata=await JSON.parse(sessionStorage.getItem('notshowagain'));
-        console.log(sessondata,'sessondata')
         setSessionData(sessondata)
       }
 
-// const logo="http://88.208.224.110/mucheco_react/admin/assets/img/logo.png"
-// console.log('header..........',props);
     return (
         <>
             {/* <!--====== Start Preloader ======--> */}

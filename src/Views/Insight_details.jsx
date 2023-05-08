@@ -4,27 +4,34 @@ import Loader from '../components/Loader';
 import { CallApi_Without_Token } from '../Services/Client';
 import { API } from '../Services/Apis';
 import { Helmet } from "react-helmet";
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import {helmet} from '../Utils/Utils';
 
 
 function Insight_details(props) {
-    const location = useLocation();
+
+    let { slug } = useParams();
     // const api_type = props.type
     const [detailsData, setDetailsData] = useState([]);
-    const [loading, setLoading] = useState(false);
-    // contact submit and validation
-    const idFrom_PrevPage = location?.state?.id;
+    const [loading, setLoading] = useState();
 
-    useEffect(() => {
+    const[metaData,setMetaData]=useState('');
+    const api_type = props.type;
+    useEffect( () => {
+        helmet(api_type,setMetaData);
+        window.scrollTo({top: 0, behavior: 'smooth'});
+   
         getBlogByID();
-    }, [])
+    }, [api_type])
+    // contact submit and validation
+
 
     const getBlogByID = async () => {
         try {
             setLoading(true)
             var formdata = new FormData();
-            formdata.append("request_type", 'get_blog_by_id');
-            formdata.append("blog_id", idFrom_PrevPage);
+            formdata.append("request_type", 'get_blog_by_slug');
+            formdata.append("slug", slug);
             const data = await CallApi_Without_Token('POST', API.INSIGHT_PAGE, formdata)
             setLoading(false)
             if (data.status === 1) {
@@ -34,7 +41,7 @@ function Insight_details(props) {
                 setLoading(false)
             }
         } catch (e) {
-            setLoading(false)
+            setLoading(true)
         }
 
     }
@@ -46,9 +53,9 @@ function Insight_details(props) {
 
                 <Loader show={loading} />
                 <Helmet>
-                    <title>{detailsData?.data?.meta_title}</title>
-                    <meta name="description" content={detailsData?.data?.meta_description} />
-                    <meta name="keywords" content={detailsData?.data?.meta_keyword} />
+                <title>{metaData?.data?.meta_title}</title>
+                <meta name="description" content={metaData?.data?.meta_description} />
+                <meta name="keywords" content={metaData?.data?.meta_keyword} />
                 </Helmet>
 
                 {/* <!--====== Start insight Section ======--> */}

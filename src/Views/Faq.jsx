@@ -1,6 +1,26 @@
-import React from 'react';
+
 import Header from './Header';
+import React, { useEffect, useState } from 'react';
+import { CallApi_Without_Token } from '../Services/Client';
+import { API } from '../Services/Apis';
+
 function Faq() {
+    const [faqData, setFaqData] = useState([]);
+    useEffect(() => {
+
+        fetchInfo();
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }, [])
+
+    const fetchInfo = async () => {
+        var formdata = new FormData();
+        formdata.append("request_type", 'faq');
+        const data = await CallApi_Without_Token('POST', API.FAQ, formdata)
+        if (data.status === 1) {
+            setFaqData(data)
+        }
+    }
+   
  
   return (
     <>
@@ -21,83 +41,44 @@ function Faq() {
                                
                             </div>
                             <div className="faq-accordian faq-accordian-two wow fadeInUp" id="accordianOne" >
-                                <div className="card">
-                                    <div className="card-header">
-                                        <a href="#" className="collapsed circle_pointer" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" >
-                                            
-                                        Gone Floating Labels & Green Lighthouse Scores
-                                    
-                                        </a>
-                                    </div>
-                                    <div id="collapseOne" className="collapse show" data-parent="#accordianOne">
-                                        <div className="card-body">
-                                            <p>We are in the business of helping Merchants, Retailers and Developer community grow their sales and
-                                                operational efficiency through innovation experience and empathy.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card">
-                                    <div className="card-header">
-                                        <a href="#" className="collapsed circle_pointer" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" >
-                                            
-                                        Scraping Websites With Node & Puppeteer
-                                    
-                                        </a>
-                                    </div>
-                                    <div id="collapseTwo" className="collapse" data-parent="#accordianOne">
-                                        <div className="card-body">
-                                            <p>Mucheco Commerce is a leading Ecommerce Technology company focused on helping retailers improve their
-                                                sales and profitability through technology, innovation and experience.</p>
-                                                
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card">
-                                    <div className="card-header">
-                                        <a href="#" className="collapsed circle_pointer" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" >
-                                           
-                                        UI Design Testing Tools I Use All The Time
-                                    
-                                        </a>
-                                    </div>
-                                    <div id="collapseThree" className="collapse" data-parent="#accordianOne">
-                                        <div className="card-body">
-                                            <p>Our commitment to our client’s success and our standards sets mucheco apart as a world-class professional services organisation.</p>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card">
-                                    <div className="card-header">
-                                        <a href="#" className="collapsed circle_pointer" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" >
-                                            
-                                        Gone Floating Labels & Green Lighthouse Scores
-                                    
-                                        </a>
-                                    </div>
-                                    <div id="collapseFour" className="collapse" data-parent="#accordianOne">
-                                        <div className="card-body">
-                                            <p>We are in the business of helping Merchants, Retailers and Developer community grow their sales and
-                                                operational efficiency through innovation experience and empathy.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="card">
-                                    <div className="card-header">
-                                        <a href="#" className="collapsed circle_pointer" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" >
-                                            
-                                        Scraping Websites With Node & Puppeteer
-                                    
-                                        </a>
-                                    </div>
-                                    <div id="collapseFive" className="collapse" data-parent="#accordianOne">
-                                        <div className="card-body">
-                                            <p>Mucheco Commerce is a leading Ecommerce Technology company focused on helping retailers improve their
-                                                sales and profitability through technology, innovation and experience.</p>
-                                               
-                                        </div>
-                                    </div>
-                                </div>
+                         
+                            {Array.isArray(faqData?.data) ? <>
+                            {faqData?.data?.map((each, key) => {
+                                return (
+                                  key ? <div className="card">
+                                  <div className="card-header">
+                                      <a href="#" className="collapsed circle_pointer" data-toggle="collapse" data-target={ `#collapse${key}` } aria-expanded="true" >
+                                          {each.question}
+                                  
+                                      </a>
+                                  </div>
+                                  <div id={ `collapse${key}` } className="collapse" data-parent="#accordianOne">
+                                      <div className="card-body">
+                                          <p>{each.answer}</p>
+                                      </div>
+                                  </div>
+                              </div>: <div className="card">
+                              <div className="card-header">
+                                  <a href="#" className="collapsed circle_pointer" data-toggle="collapse" data-target={ `#collapse${key}` } aria-expanded="true" >
+                                      {each.question}
+                              
+                                  </a>
+                              </div>
+                              <div id={ `collapse${key}` } className="collapse show" data-parent="#accordianOne">
+                                  <div className="card-body">
+                                      <p>{each.answer}</p>
+                                  </div>
+                              </div>
+                          </div>
+                                   
+                                   
+                                )
+                            })}
+                        </> : null}
+
+
+
+                                
                                
                                 
                             </div>

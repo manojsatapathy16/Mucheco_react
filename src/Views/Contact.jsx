@@ -1,6 +1,7 @@
-import React, { useState ,useEffect } from 'react';
+import React, { useState ,useEffect,useLayoutEffect } from 'react';
 import Header from './Header';
 import { Helmet } from "react-helmet";
+import { Link } from 'react-router-dom';
 function Contact() {
   
   const initialValues = { firstname: '',lastname: '',phone:'', email: '',lead:'',website:'', message:'' };
@@ -8,6 +9,13 @@ function Contact() {
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [isSuccess,setIsSuccess] = useState({})
+ 
+  useLayoutEffect(() => {
+   
+    window.scrollTo({top: 1, behavior: 'smooth'});
+  
+
+    }, []);
 // onchange handler
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,6 +51,7 @@ fetch("http://88.208.224.110/mucheco2023api/api/contact_us.php", requestOptions)
     
 }
 
+
   useEffect(() => {
   
     if (Object.keys(formErrors).length === 0 && isSubmit) {
@@ -50,7 +59,9 @@ fetch("http://88.208.224.110/mucheco2023api/api/contact_us.php", requestOptions)
       sendData(formValues);
 
       setFormValues(initialValues);
+
     }
+    
   }, [formErrors]);
   // validate form
   const validate = (values) => {
@@ -75,6 +86,14 @@ fetch("http://88.208.224.110/mucheco2023api/api/contact_us.php", requestOptions)
     
     return errors;
   };
+  
+ //  Will scroll smoothly to the top of the next section
+  const handleClickScroll = () => {
+    const element = document.getElementById('contact-wrapper');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+}
  
   return (
     <>
@@ -162,7 +181,7 @@ fetch("http://88.208.224.110/mucheco2023api/api/contact_us.php", requestOptions)
                             <div className="information-box mb-25">
                                 <h3>Ready To Work With Us?</h3>
                                 <p>Please feel free to connect with us for any queries.</p>
-                                <a href="#contact-wrapper" className="main-btn main-btn-blue">Contact Us</a>
+                                <button onClick={handleClickScroll} className="main-btn main-btn-blue">Contact Us</button>
                             </div>
                         </div>
                     </div>

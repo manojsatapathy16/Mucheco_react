@@ -6,9 +6,12 @@ import Loader from '../components/Loader';
 import { CallApi_Without_Token } from '../Services/Client';
 import { API } from '../Services/Apis';
 import { Helmet } from "react-helmet";
+import {helmet} from '../Utils/Utils';
+import { Link,useNavigate } from 'react-router-dom';
 
 
 function ServiceDetails(props) {
+    
     const api_type = props.type
     const [detailsData, setDetailsData] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -18,6 +21,12 @@ function ServiceDetails(props) {
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [isSuccess, setIsSuccess] = useState({})
+
+    const[metaData,setMetaData]=useState('');
+    const navigate = useNavigate();
+    useEffect( () => {
+        helmet(api_type,setMetaData);
+    }, [api_type])
 
     useLayoutEffect(() => {
         fetchInfo();
@@ -33,6 +42,7 @@ function ServiceDetails(props) {
     }, [formErrors]);
 
     const fetchInfo = async () => {
+        try{
         setLoading(true)
         var formdata = new FormData();
         formdata.append("request_type", api_type);
@@ -41,9 +51,16 @@ function ServiceDetails(props) {
         if (data.status === 1) {
             setDetailsData(data)
             setLoading(false)
+            window.scrollTo({top: 0, behavior: 'smooth'});
         } else {
-            setLoading(false)
+            setLoading(true);
+            setTimeout(() => {navigate("/about/case-study");},5000);
         }
+    }
+    catch(e){ 
+        setLoading(true);
+        setTimeout(() => {navigate("/about/case-study");},5000);
+    }
     }
     // onchange handler
     const handleChange = (e) => {
@@ -125,9 +142,9 @@ function ServiceDetails(props) {
 
                 <Loader show={loading} />
                 <Helmet>
-                <title>mucheco</title>
-                <meta name="description" content="Helmet application" />
-                <meta name="keywords" content="HTML, CSS, JavaScript"/>
+                <title>{metaData?.data?.meta_title}</title>
+                <meta name="description" content={metaData?.data?.meta_description} />
+                <meta name="keywords" content={metaData?.data?.meta_keyword} />
             </Helmet>
 
                 {/* <!--====== Start About Section ======--> */}
@@ -491,12 +508,12 @@ function ServiceDetails(props) {
                                         <img src={require("../image/service_details/mercato_place_home.png")} alt="portfolio image" />
                                         <div className="portfolio-hover">
                                             <div className="hover-content">
-                                                <a href="https://mercatoplace.com/" target="_blank" className="img-popup"><i className="far fa-plus"></i></a>
+                                                <Link to="https://mercatoplace.com/" target="_blank" className="img-popup"><i class="far fa-long-arrow-right"></i></Link>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="portfolio-content">
-                                        <h3 className="title"><a href="project-details.html">Mercato Marketplace</a></h3>
+                                        <h3 className="title"><Link to="https://mercatoplace.com/">Mercato Marketplace</Link></h3>
                                         <span className="category">Web Design And Development</span>
                                     </div>
                                 </div>
@@ -507,12 +524,12 @@ function ServiceDetails(props) {
                                         <img src={require("../image/service_details/bookodisha_home.png")} alt="portfolio image" />
                                         <div className="portfolio-hover">
                                             <div className="hover-content">
-                                                <a href="https://www.bookodisha.com/" target="_blank" className="img-popup"><i className="far fa-plus"></i></a>
+                                                <Link to="https://www.bookodisha.com/" target="_blank" className="img-popup"><i class="far fa-long-arrow-right"></i></Link>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="portfolio-content">
-                                        <h3 className="title"><a href="project-details.html">Booking Engine</a></h3>
+                                        <h3 className="title"><Link to="https://www.bookodisha.com">Booking Engine</Link></h3>
                                         <span className="category">Web Development And Booking</span>
                                     </div>
                                 </div>
@@ -520,32 +537,32 @@ function ServiceDetails(props) {
                             <div className="col-lg-6 portfolio-column" style={{ position: 'absolute', left: '50%', top: '612.617px' }}>
                                 <div className="portfolio-block-four bg-three text-center wow fadeInUp" data-wow-delay=".4s" style={{ visibility: 'visible', animationDelay: '0.4s', animationName: 'fadeInUp' }} data-aos="fade-up" data-aos-duration="900">
                                     <div className="portfolio-img">
-                                        <img src={require("../image/service_details/bookodisha_home.png")} alt="portfolio image" />
+                                        <img src={require("../image/service_details/holidays.jpg")} alt="portfolio image" />
                                         <div className="portfolio-hover">
                                             <div className="hover-content">
-                                                <a href="https://www.bookodisha.com/" target="_blank" className="img-popup"><i className="far fa-plus"></i></a>
+                                                <Link to="https://www.clubpuertocolon.com/" target="_blank" className="img-popup"><i class="far fa-long-arrow-right"></i></Link>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="portfolio-content">
-                                        <h3 className="title"><a href="project-details.html">Booking Engine</a></h3>
-                                        <span className="category">Web Development And Booking</span>
+                                        <h3 className="title"><Link to="https://www.clubpuertocolon.com/">puerto colon club</Link></h3>
+                                        <span className="category">Web Development And Designing</span>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-6 portfolio-column" style={{ position: 'absolute', left: '0%', top: '728.85px' }}>
                                 <div className="portfolio-block-four bg-four text-center wow fadeInUp" data-wow-delay=".5s" style={{ visibility: 'visible', animationDelay: '0.5s', animationName: 'fadeInUp' }} data-aos="fade-up" data-aos-duration="1100">
                                     <div className="portfolio-img">
-                                        <img src={require("../image/service_details/mercato_place_home.png")} alt="portfolio image" />
+                                        <img src={require("../image/service_details/uk-pallet.jpg")} alt="portfolio image" />
                                         <div className="portfolio-hover">
                                             <div className="hover-content">
-                                                <a href="https://mercatoplace.com/" target="_blank" className="img-popup"><i className="far fa-plus"></i></a>
+                                                <Link to="https://www.ukpalletcommercialdeliveries.com/" target="_blank" className="img-popup"><i class="far fa-long-arrow-right"></i></Link>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="portfolio-content">
-                                        <h3 className="title"><a href="project-details.html">Mercato Marketplace</a></h3>
-                                        <span className="category">Web Design And Development</span>
+                                        <h3 className="title"><Link to="https://www.ukpalletcommercialdeliveries.com/">Uk Pallet</Link></h3>
+                                        <span className="category">Web Development And Designing</span>
                                     </div>
                                 </div>
                             </div>
@@ -553,7 +570,7 @@ function ServiceDetails(props) {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="button mt-50 text-center wow fadeInUp" data-wow-delay=".5s" style={{ visibility: 'visible', animationDelay: '0.5s', animationName: 'fadeInUp' }} data-aos="fade-up" data-aos-duration="1300">
-                                    <a href="/mucheco_react/portfolio" className="main-btn btn-orange-dark">View more gallery</a>
+                                    <Link to="/portfolio" className="main-btn btn-orange-dark">View more gallery</Link>
                                 </div>
                             </div>
                         </div>
@@ -569,7 +586,7 @@ function ServiceDetails(props) {
                                 <div className="cta-content-box text-center wow fadeInUp">
                                     <h2>Ready To Get Our Design Services ?</h2>
                                     <ul className="button">
-                                        <li><a href="/contact" className="main-btn btn-blue-light">Contact Us</a></li>
+                                        <li><Link to="/Contact" className="main-btn btn-blue-light">Contact Us</Link></li>
                                         <li><a href="service-1.html" className="main-btn btn-purple">Our services</a></li>
                                     </ul>
                                 </div>
@@ -591,10 +608,10 @@ function ServiceDetails(props) {
                                     </div>
                                     <p>Get expert IT solutions to propel your business forward with our custom software development, e-commerce, and digital marketing services to help you succeed in the digital age.</p>
                                     <ul className="social-link">
-                                        <li><a href="https://www.facebook.com/muchecodotcom" target='_blank'><i className="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="https://www.linkedin.com/company/mucheco" target='_blank'><i className="fab fa-linkedin"></i></a></li>
-                                        <li><a href="https://twitter.com/muchecodotcom" target='_blank'><i className="fab fa-twitter"></i></a></li>
-                                        <li><a href="https://www.youtube.com/c/muchecodotcom" target='_blank'><i className="fab fa-youtube"></i></a></li>
+                                        <li><Link to="https://www.facebook.com/muchecodotcom" target='_blank'><i className="fab fa-facebook-f"></i></Link></li>
+                                        <li><Link to="https://www.linkedin.com/company/mucheco" target='_blank'><i className="fab fa-linkedin"></i></Link></li>
+                                        <li><Link to="https://twitter.com/muchecodotcom" target='_blank'><i className="fab fa-twitter"></i></Link></li>
+                                        <li><Link to="https://www.youtube.com/c/muchecodotcom" target='_blank'><i className="fab fa-youtube"></i></Link></li>
                                     </ul>
                                 </div>
                             </div>

@@ -1,107 +1,123 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../Header';
+import Loader from '../../components/Loader';
+import { CallApi_Without_Token } from '../../Services/Client';
+import { API } from '../../Services/Apis';
+import { useLocation,useNavigate} from 'react-router-dom';
 import { Helmet } from "react-helmet";
-function CaseStudy_Details() {
- 
-  return (
-    <>
-     <div className="inner_pages_wrapper">
-    <Header class_bg='black_bg' />
-    <Helmet>
-                <title>mucheco</title>
-                <meta name="description" content="Helmet application" />
-                <meta name="keywords" content="HTML, CSS, JavaScript"/>
-            </Helmet>
+import { helmet } from '../../Utils/Utils';
 
-    {/* <!--====== Start Hero Section ======--> */}
-    {/* <section className="hero-area">
-        <div className="breadcrumbs-wrapper bg_cover">
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-lg-8">
-                        <div className="page-title-text text-center">
-                            <h1 className="title">Case Study</h1>
-                            <ul className="breadcrumbs-link">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="Case_Study.html">Case Study</a></li>
-                                <li className="active">Case Study Details</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> */}
-    {/* <!--====== End Hero Section ======--> */}
-    {/* <!--====== Start case_study_landing Section ======--> */}
-    <section className="case_study_details_page pb-50">
-        <div className="inner_banner">
-        <img src={require("../../image/case-study/uk_pallet_details.jpg")} alt=""/>
-    </div>
-        <div className="container">
-            <p><span className="case_details_des_head"><strong>We provided complete Digital Marketing Solutions to a pallet delivery company in UK</strong></span></p>
+function CaseStudy_Details(props) {
+    const navigate = useNavigate();
+   
+    const location = useLocation();
+    // const api_type = props.type
+    const [detailsData, setDetailsData] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [metaData, setMetaData] = useState('');
+    const api_type = props.type;
+    useEffect(() => {
+        helmet(api_type, setMetaData);
+        window.scrollTo({ top: 1, behavior: 'smooth' });
+        getBlogByID();
+    }, [api_type])
 
-            <p><strong>Uk Pallet Commercial Deliveries Ltd -  </strong><span
-                    style={{color: "#4B0082"}}><strong>www.ukpalletcommercialdeliveries.com</strong></span></p>
+    const idFrom_PrevPage = location?.state?.id;
+    // console.log(idFrom_PrevPage,'ids from home page...........')
 
-            <p>UK Pallet Commercial Deliveries Ltd has been delivering pallets since 2006, with a focus on providing affordable, efficient, and reliable delivery services to both residential and commercial customers in the UK and Europe. With easy online booking and payment methods, we make shipping your goods hassle-free.</p>
-                <div className="case_details_items" data-aos="fade-up" data-aos-duration="1000">
-                <div className="nomber"><span className="nomber_span">01.</span><div className="tilt"></div></div>
-                <h2 className="block_heading">Requirements</h2>
-            {/* <!-- <p><span style="font-size:14px"><strong>Requirements</strong></span></p> --> */}
-            <ul className="check-list list-circle-bg mb-20 wow fadeInUp aos-init aos-animate" >
-                <li>Keyword Ranking Improvement in SERP</li>
-            <li>Increase Online Visibility</li>
-            <li>Increase Brand Value in Online Market</li>
-            <li>Increase Brand Value in Targeted Area</li>
-            <li>Website Optimization &amp; Reputation Management</li>
-            </ul>
-        </div>
-            <div className="case_details_items" data-aos="fade-up" data-aos-duration="1000">
-            <div className="nomber"><span className="nomber_span">02.</span><div className="tilt"></div></div>
-            <h2 className="block_heading">Challenges</h2>
-            {/* <!-- <p><span style="font-size:14px"><strong>Challenges</strong></span></p> --> */}
 
-            <p>UK Pallet Commercial Deliveries Ltd wanted us to provide a Digital Marketing solution to increase its visibility and popularity in Search Engines (Google, Bing, etc). The website is developed on the<strong>WordPress</strong> platform.</p>
-
-           
-            </div>
-                <div className="case_details_items" data-aos="fade-up" data-aos-duration="1000">
-                <div className="nomber"><span className="nomber_span">03.</span><div className="tilt"></div></div>
-                <h2 className="block_heading">Solutions We Provided </h2>
-            <p><span style={{fontSize: "14px"}}>
-                We provided the following solutions to promote ukpalletcommercialdeliveries.com in a highly competitive logistics market. Our SEO techniques help to reach the target audience and increase brand value. We fixed all required on-page issues and created high PA DA backlinks. We implemented all on-page work like meta tags fixation, xml sitemap, Google analytics, and Google webmaster in the WordPress platform.
-            </span></p>
-            <ul className="check-list list-circle-bg mb-20 wow fadeInUp aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000">
-                <li>Organic SEO</li>
-            <li>On page Optimization</li>
-            <li>Mata Tag creation</li>
-            <li>Google White Techniques for high visibility search engines.</li>
-            <li>Sitemap XML, Google Webmaster in Drupal and Google Analytics implementation</li>
-            <li>High PA DA Back-link creation</li>
-            <li>Bi-Monthly Working Report</li>
-            <li>Bi-Monthly Keyword Ranking Report</li>
-            <li>Monthly Google Analytic Visitors Report</li>
+    const getBlogByID = async () => {
+        try {
+            setLoading(true)
+            var formdata = new FormData();
+            formdata.append("request_type", 'get_case_study_by_id');
+            formdata.append("casestudy_id", idFrom_PrevPage);
+            const data = await CallApi_Without_Token('POST', API.CASE_STUDY, formdata)
+            setLoading(false)
+            if (data.status === 1) {
+                setDetailsData(data)
+                setLoading(false)
+                
+            } else {
+                setLoading(true)
+                setTimeout(() => {navigate("/about/case-study");},5000);
+            }
+        } catch (e) {
+            setLoading(true)
+            setTimeout(() => {navigate("/about/case-study");},5000);
             
-            </ul>
-        </div>
-            <div className="case_details_items" data-aos="fade-up" data-aos-duration="1000">
-            <div className="nomber"><span className="nomber_span">04.</span><div className="tilt"></div></div>
-                <h2 className="block_heading">The Result</h2>
-            {/* <!-- <p><strong><span style="font-size:14px">The Result&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                </strong></p> --> */}
+        }
 
-            <p>Our efforts helped UK Pallet Commercial Deliveries Ltd achieve significant growth in their online presence, increasing website traffic by 50% and boosting online bookings by 60%. Through targeted SEO, social media, and PPC advertising, we delivered measurable results, driving increased brand awareness and growth in the pallet delivery industry. Continued investment in digital marketing will allow UK Pallet to maintain their position as a leader in the industry and drive further growth.</p>
+    }
+    // console.log(detailsData,'casestudy detailsData.at...........')
+
+    return (
+        <>
+            <div className="inner_pages_wrapper">
+                <Header class_bg='black_bg' />
+                <Loader show={loading} />
+                <Helmet>
+                    <title>{metaData?.data?.meta_title}</title>
+                    <meta name="description" content={metaData?.data?.meta_description} />
+                    <meta name="keywords" content={metaData?.data?.meta_keyword} />
+                </Helmet>
+
+                {/* <!--====== Start case_study_landing Section ======--> */}
+                <section className="case_study_details_page pb-50">
+                    <div className="inner_banner">
+                        <img src={detailsData?.data?.banner_image} alt="" />
+                    </div>
+                    <div className="container">
+                        <div dangerouslySetInnerHTML={{ __html: detailsData?.data?.description }}></div>
+
+                        <div className="case_details_items" data-aos="fade-up" data-aos-duration="1000">
+                            <div className="nomber"><span className="nomber_span">01.</span><div className="tilt"></div></div>
+                            <h2 className="block_heading">Requirements</h2>
+
+                            <div dangerouslySetInnerHTML={{ __html: detailsData?.data?.requirements }}></div>
+                        </div>
+                        <div className="case_details_items" data-aos="fade-up" data-aos-duration="1000">
+                            <div className="nomber"><span className="nomber_span">02.</span><div className="tilt"></div></div>
+                            <h2 className="block_heading">Challenges</h2>
+
+
+
+                            <div dangerouslySetInnerHTML={{ __html: detailsData?.data?.challenges }}></div>
+
+                        </div>
+                        <div className="case_details_items" data-aos="fade-up" data-aos-duration="1000">
+                            <div className="nomber"><span className="nomber_span">03.</span><div className="tilt"></div></div>
+                            <h2 className="block_heading">Solutions We Provided</h2>
+
+                            <div dangerouslySetInnerHTML={{ __html: detailsData?.data?.solutions }}></div>
+                        </div>
+                        <div className="case_details_items" data-aos="fade-up" data-aos-duration="1000">
+                            <div className="nomber"><span className="nomber_span">04.</span><div className="tilt"></div></div>
+                            <h2 className="block_heading">The Result</h2>
+                            <div className="rerult_imgs">
+
+                            </div>
+                            {(detailsData?.data?.result_image.length) ? <div className="rerult_imgs">
+                                {detailsData?.data?.result_image?.map((each, key) => {
+                                    return (
+                                        <div className="result_img" id={`result_img`+key}>
+                                            <img src={each} alt="" />
+                                        </div>
+                                    )
+                                })}
+                            </div> : null}
+
+                            <div dangerouslySetInnerHTML={{ __html: detailsData?.data?.result }}></div>
+                        </div>
+
+                    </div>
+                </section>
+                {/* <!--====== End case_study_landing Section ======--> */}
+
             </div>
 
-        </div>
-    </section>
-    {/* <!--====== End case_study_landing Section ======--> */}
-   
-     </div>
-   
-     
-    </>
+
+        </>
     );
 }
 

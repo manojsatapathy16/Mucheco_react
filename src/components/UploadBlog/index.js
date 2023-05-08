@@ -123,7 +123,7 @@ function UploadBlog() {
 
 
 
-console.log(value,'......manoj');
+
 
     return (
         <>
@@ -212,7 +212,7 @@ console.log(value,'......manoj');
 
                                     onReady={editor => {
                                         // You can store the "editor" and use when it is needed.
-                                        console.log('Editor is ready to use!', editor);
+                                        
                                     }}
 
                                     onChange={(event, editor) => {
@@ -220,15 +220,15 @@ console.log(value,'......manoj');
                                         settextfieldValue(data);
                                     }}
                                     onBlur={(event, editor) => {
-                                        console.log(editor, 'Blur.', event);
+                                       
                                     }}
                                     onFocus={(event, editor) => {
-                                        console.log('Focus.', editor);
+                                       
                                     }}
                                 />
                             </div>
                             <button onClick={() => {
-                                console.log('Submitted values', value)
+                               
                             }} className='login_submit btn' type='submit'>Submit</button>
                         </form>
                     </div>}

@@ -21,7 +21,7 @@ export default function CursorCircle ({children}) {
       //  requestAnimationFrame(render);
     });
   }, []);
-  console.log(smallCursorRef);
+  // console.log(smallCursorRef);
 
   return (
    <>

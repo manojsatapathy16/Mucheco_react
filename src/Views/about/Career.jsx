@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../Header';
 import { Helmet } from "react-helmet";
+import {helmet} from '../../Utils/Utils';
 
-function Career() {
+function Career(props) {
+    const[metaData,setMetaData]=useState('');
+    const api_type = props.type;
+    useEffect( () => {
+        helmet(api_type,setMetaData);
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }, [api_type])
  
   return (
     <>
      <div className="inner_pages_wrapper">
     <Header class_bg='black_bg' />
     <Helmet>
-                <title>mucheco</title>
-                <meta name="description" content="Helmet application" />
-                <meta name="keywords" content="HTML, CSS, JavaScript"/>
+    <title>{metaData?.data?.meta_title}</title>
+                <meta name="description" content={metaData?.data?.meta_description} />
+                <meta name="keywords" content={metaData?.data?.meta_keyword} />
             </Helmet>
 
     {/* <!--====== Start Hero Section ======--> */}
@@ -192,9 +199,9 @@ function Career() {
                  {/* <div className="open_vacancy">
                 <div className="row">
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="400">
+                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".2s"  data-aos="fade-up" data-aos-duration="400">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt=""/>
+                                <img src={require("../../image/icon-3.png")} alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -206,9 +213,9 @@ function Career() {
                         </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="600">
+                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".3s" data-aos="fade-up" data-aos-duration="600">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt=""/>
+                                <img src={require("../../image/icon-3.png")} alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -220,9 +227,9 @@ function Career() {
                         </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="800">
+                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".4s"  data-aos="fade-up" data-aos-duration="800">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt=""/>
+                                <img src={require("../../image/icon-3.png")} alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -234,9 +241,9 @@ function Career() {
                         </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="1000">
+                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".5s"  data-aos="fade-up" data-aos-duration="1000">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt=""/>
+                                <img src={require("../../image/icon-3.png")} alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -248,9 +255,9 @@ function Career() {
                         </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="1200">
+                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".6s"  data-aos="fade-up" data-aos-duration="1200">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt=""/>
+                                <img src={require("../../image/icon-3.png")} alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -262,9 +269,9 @@ function Career() {
                         </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="1400">
+                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".7s" data-aos="fade-up" data-aos-duration="1400">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt=""/>
+                                <img src={require("../../image/icon-3.png")} alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -276,9 +283,9 @@ function Career() {
                         </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="1600">
+                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".8s" data-aos="fade-up" data-aos-duration="1600">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt=""/>
+                                <img src={require("../../image/icon-3.png")} alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>
@@ -290,9 +297,9 @@ function Career() {
                         </div>
                     </div>
                     <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".9s" style="visibility: visible; animation-delay: 0.9s; animation-name: fadeInUp;" data-aos="fade-up" data-aos-duration="1800">
+                        <div className="single-job-item text-center mb-30 wow fadeInUp" data-wow-delay=".9s"  data-aos="fade-up" data-aos-duration="1800">
                             <div className="icon">
-                                <img src="image/icon-3.png" alt=""/>
+                                <img src={require("../../image/icon-3.png")} alt=""/>
                             </div>
                             <div className="text">
                                 <h3 className="title"><a href="#">Senior Design</a></h3>

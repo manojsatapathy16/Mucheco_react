@@ -12,6 +12,7 @@ function Firstcome() {
 // console.log(sessondata)
 const fetchInfo = async () => {
     var formdata = new FormData();
+    formdata.append("request_type", 'get_in_touch');
     formdata.append("first_name", inputData.Name);
     formdata.append("email", inputData.Email);
     formdata.append("phone", inputData.Phone);
@@ -53,7 +54,7 @@ const fetchInfo = async () => {
             </div>
           <form action="" onSubmit={handleLoginSubmit} >
             <h4>Get In Touch</h4>
-            <button className='close_btn' onClick={modalClose} type='submit'>x</button>
+            <button className='close_btn' onClick={modalClose} type='submit'><span></span></button>
             <div>
             {/* <label htmlFor="">Name</label> */}
             <input type="text" name='Name' placeholder='Enter Your Name' value={inputData.Name}

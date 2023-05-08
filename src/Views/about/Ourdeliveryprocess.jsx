@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../Header';
 import OwlCarousel from 'react-owl-carousel';
 import { Helmet } from "react-helmet";
+import {helmet} from '../../Utils/Utils';
 
-function Ourdeliveryprocess() {
+function Ourdeliveryprocess(props) {
+    const[metaData,setMetaData]=useState('');
+    const api_type = props.type;
+    useEffect( () => {
+        helmet(api_type,setMetaData);
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }, [api_type])
  
   return (
     <>
      <div className="inner_pages_wrapper">
     <Header class_bg='black_bg' />
     <Helmet>
-                <title>mucheco</title>
-                <meta name="description" content="Helmet application" />
-                <meta name="keywords" content="HTML, CSS, JavaScript"/>
+    <title>{metaData?.data?.meta_title}</title>
+                <meta name="description" content={metaData?.data?.meta_description} />
+                <meta name="keywords" content={metaData?.data?.meta_keyword} />
             </Helmet>
 
     {/* <!--====== Start Hero Section ======--> */}
@@ -233,13 +240,13 @@ function Ourdeliveryprocess() {
                             <h4 className="pt-fancy-title">Explore</h4>
                             <p>Our early engagement team will meet with your team to explore the options available to you for your new ecommerce platform.</p>
                         </div>
-                        <div className="pt-btn-container">
+                        {/* <div className="pt-btn-container">
                             <div className="pt-button-block">
                                 <a className="pt-button pt-btn-link" href="Contact.html">
                                     <span className="text">More Details</span>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <div className="item">
@@ -251,13 +258,13 @@ function Ourdeliveryprocess() {
                             <h4 className="pt-fancy-title">Plan</h4>
                             <p>Highly qualified Magento specialists ensure the functionality you require is explored, defined, tested and delivered. </p>
                         </div>
-                        <div className="pt-btn-container">
+                        {/* <div className="pt-btn-container">
                             <div className="pt-button-block">
                                 <a className="pt-button pt-btn-link" href="Contact.html">
                                     <span className="text">More Details</span>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
@@ -270,13 +277,13 @@ function Ourdeliveryprocess() {
                             <h4 className="pt-fancy-title">Design</h4>
                             <p>A creative "kick-off" captures all the critical information including your objectives, customer demographics, user personas and aspirations. </p>
                         </div>
-                        <div className="pt-btn-container">
+                        {/* <div className="pt-btn-container">
                             <div className="pt-button-block">
                                 <a className="pt-button pt-btn-link" href="Contact.html">
                                     <span className="text">More Details</span>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
@@ -289,13 +296,13 @@ function Ourdeliveryprocess() {
                             <h4 className="pt-fancy-title">Develop</h4>
                             <p>An incredibly talented group of developers look for the most robust solutions to give you the functionality and results you need. </p>
                         </div>
-                        <div className="pt-btn-container">
+                        {/* <div className="pt-btn-container">
                             <div className="pt-button-block">
                                 <a className="pt-button pt-btn-link" href="Contact.html">
                                     <span className="text">More Details</span>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
@@ -308,13 +315,13 @@ function Ourdeliveryprocess() {
                             <h4 className="pt-fancy-title">Test </h4>
                             <p>Our testers QA against the original specs to ensure sites are the highest quality, both operationally and visually.  </p>
                         </div>
-                        <div className="pt-btn-container">
+                        {/* <div className="pt-btn-container">
                             <div className="pt-button-block">
                                 <a className="pt-button pt-btn-link" href="Contact.html">
                                     <span className="text">More Details</span>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
@@ -327,13 +334,13 @@ function Ourdeliveryprocess() {
                             <h4 className="pt-fancy-title">Deploy </h4>
                             <p>Our early engagement team will meet with your team to explore the options available to you for your new ecommerce platform.  </p>
                         </div>
-                        <div className="pt-btn-container">
+                        {/* <div className="pt-btn-container">
                             <div className="pt-button-block">
                                 <a className="pt-button pt-btn-link" href="Contact.html">
                                     <span className="text">More Details</span>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
@@ -346,13 +353,13 @@ function Ourdeliveryprocess() {
                             <h4 className="pt-fancy-title">Launch </h4>
                             <p>Once the new online store has been thoroughly tested on a staging site and is exactly as you want, it's time to go live.  </p>
                         </div>
-                        <div className="pt-btn-container">
+                        {/* <div className="pt-btn-container">
                             <div className="pt-button-block">
                                 <a className="pt-button pt-btn-link" href="Contact.html">
                                     <span className="text">More Details</span>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
@@ -365,13 +372,13 @@ function Ourdeliveryprocess() {
                             <h4 className="pt-fancy-title">Optimise</h4>
                             <p>After your site has gone live, we can advise you on how best to optimise your store to increase sales and improve efficiency. </p>
                         </div>
-                        <div className="pt-btn-container">
+                        {/* <div className="pt-btn-container">
                             <div className="pt-button-block">
                                 <a className="pt-button pt-btn-link" href="Contact.html">
                                     <span className="text">More Details</span>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
@@ -384,13 +391,13 @@ function Ourdeliveryprocess() {
                             <h4 className="pt-fancy-title">Extend </h4>
                             <p>Extend your platform with new features, functionality and capabilities, fully customised to integrate with your back-office processes.  </p>
                         </div>
-                        <div className="pt-btn-container">
+                        {/* <div className="pt-btn-container">
                             <div className="pt-button-block">
                                 <a className="pt-button pt-btn-link" href="Contact.html">
                                     <span className="text">More Details</span>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
