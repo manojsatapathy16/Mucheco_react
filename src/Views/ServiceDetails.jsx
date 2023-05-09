@@ -332,7 +332,7 @@ function ServiceDetails(props) {
                             <div className="col-lg-6">
                                 <div className="img-holder-box mb-20">
                                     <div className="row align-items-center">
-                                        <div className="col-lg-6">
+                                        <div className="col-lg-6 col-6">
                                             <div className="img-holder border-top-left-radius mb-30 wow fadeInLeft" data-aos="fade-right" data-aos-duration="1000">
                                                 <img src={require("../image/gallery-9.jpg")} alt="" />
                                             </div>
@@ -340,7 +340,7 @@ function ServiceDetails(props) {
                                                 <img src={require("../image/gallery-10.jpg")} alt="" />
                                             </div>
                                         </div>
-                                        <div className="col-lg-6">
+                                        <div className="col-lg-6 col-6">
                                             <div className="img-holder mb-30 wow fadeInRight" data-aos="fade-right" data-aos-duration="1000">
                                                 <img src={require("../image/gallery-11.jpg")} alt="" />
                                             </div>

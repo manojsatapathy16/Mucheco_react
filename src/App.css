@@ -124,7 +124,7 @@ span.sub-title:hover {text-decoration: none;}
   border-radius: 50px;transition: all .3s ease;}
 
 .owl-carousel button.owl-dot {height: 8px;width: 8px;box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.25);border-radius: 50%;
-  background: #032e42;transition: all .3s ease;}
+  background: #032e42;transition: all .3s ease;overflow: hidden;}
 
 .service-area {background-image: url("image/service_bg.png");background-position: top center;background-repeat: no-repeat;background-size: cover;}
 
@@ -1149,4 +1149,285 @@ font-family: 'Font Awesome 5 Pro';
 .some_policys ul {
   margin-bottom: 30px;
 }
+.nav_toggle_button {
+  width: 30px;
+  display: none;
+}
+/************************ custom mobile responsive start ************************/
+@media only screen and (max-width: 480px) {
+  body h2 {
+    font-size: 30px;
+  }
+  .cursor.cursor--small {
+    display: none;
+  }
+  body{
+    cursor: context-menu;
+  }
+  .inner_pages_wrapper {
+    padding-top: 67px;
+  }
+  /* header start */
+  .nav_toggle_button {
+    display: block;
+  }
+  .header-navigation .main-menu ul li > a {
+    padding: 15px 0;
+  }
+  .header-navigation .main-menu ul > li.has-children > a::after {
+    display: none;
+  }
+  .header-navigation .main-menu ul li{
+    display: block;
+  }
+  .main-menu {
+    align-items: start;
+    gap: 20px;
+    flex-direction: column;
+  }
+  .nav-menu {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    background: #000000d1;
+    padding: 15px;
+    height: 100vh;
+    width: 80%;
+    transition: all .3s ease;
+    opacity: 0;
+  }
+  .nav-menu.active {
+    left: 0;
+    opacity: 1;
+  }
+  .header-navigation .primary-menu {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .header-navigation .main-menu ul li .sub-menu.sub-menu_about {
+    padding: 10px;
+  }
+  .header-navigation .main-menu ul li .sub-menu.sub-menu_about li {
+    width: 100%;
+  }
+  .header-navigation .main-menu ul li .sub-menu.sub-menu_about li a {
+    padding: 7px 5px;
+    min-height: 85px;
+    justify-content: left;
+    font-size: 20px;
+  }
+  .header-navigation .main-menu ul li:hover > .sub-menu {
+    top: 50px;
+    overflow: auto;
+max-height: 100vh;
+  }
+  .main-menu ul {
+    width: 100%;
+  }
+  .header-navigation .main-menu ul li .sub-menu {
+    position: absolute;
+    width: 100%;
+    flex-direction: column;
+    padding: 35px 15px;
+  }
+  .extra_sub_menu_wrapper {
+    width: 100%;
+    border-right: none;
+    padding: 0;
+  }
+  .header-navigation .main-menu ul li .sub-menu.sub-menu_about li a img {
+
+    width: 40px;
+  }
+
+    /* header end */
+    /* home page start */
+    .hero-content.text-left h1 {
+      font-size: 34px;
+    }
+    div.hero-wrapper-one .single-slider {
+      padding: 130px 0 90px;
+      height: unset;
+    }
+    .about-img-box,.text-wrapper {
+      transform: none;
+      opacity: 1 !important;
+    }
+    .section-title.case_study_title span.sub-title {
+      margin-bottom: 15px;
+      line-height: 25px;
+    }
+    .section-title h2 {
+      line-height: 35px;
+    }
+    .blank_case_study {
+      width: unset;
+    }
+    .owl-nav {
+      display: none;
+    }
+    .service-area.pb-130{
+      padding-bottom: 50px;
+    }
+.service-area.pt-130 {
+  padding-top: 50px;
+}
+.case_study {
+  padding: 50px 0px 70px 0px;
+}
+.service-style-one .service-wrapper {
+  margin-left: 0;
+}
+.service-area .border-right-1 {
+  border: none;
+}
+.service-style-one .service-wrapper::after {
+  background-color: #b5b5b4;
+  display: none;
+}
+.service-area .block-style-three {
+  padding: 15px 0px 15px;
+}
+.portfolio {
+	padding: 50px 0px 70px 0px;
+}
+.portfolio_title h2 {
+  line-height: 35px;
+}
+span.sub-title {
+  font-size: 18px;
+}
+.portfolio_title_main.side_line::before {
+  height: 54px;
+
+}
+.testimonial-item {
+  padding: 40px 10px 40px 10px;
+}
+.news_blog {
+  padding: 50px 0px 70px 0px;
+}
+.owl-dots {
+  bottom: -35px;
+}
+.banner_over_cnt p {
+  font-size: 18px;
+}
+.banner_over_cnt h2 {
+  font-size: 30px;
+  margin-top: 5px;
+}
+.banner_over_cnt .brand {
+  width: calc(50% - 20px);
+  opacity: 1;
+}
+.banner_over_cnt .brands {
+  gap: 40px;
+}
+.newsletter-style-one .newsletter-wrapper .newsletter-content-box .content h2 {
+	font-size: 25px;
+	line-height: 26px;
+}
+.newsletter-style-one .newsletter-wrapper {
+	padding: 25px;
+}
+.newsletter-form .form_group {
+  display: flex;
+}
+.newsletter-style-one .newsletter-wrapper .newsletter-form .main-btn {
+	padding: 10px;
+	font-size: 14px;
+}
+.newsletter-form {
+  justify-content: start;
+}
+.newsletter-style-one .newsletter-wrapper .newsletter-content-box {
+  margin-bottom: 5px;
+}
+.footer-default .footer-widget .footer-nav-widget {
+  padding-left: 0;
+  margin-top: 15px;
+  transform: none;
+    opacity: 1;
+}
+.footer-copyright ul.social-link {
+  text-align: left;
+}
+.imp-link {
+  gap: 12px;
+  font-size: 14px;
+  justify-content: center;
+  margin-top: 10px;
+}
+.imp-link li::after {
+	height: 13px;
+	width: 1px;
+	left: -6px;
+	top: 6px;
+}
+.footer-copyright .social-link {
+  margin-top: 0px;
+  justify-content: center;
+  display: flex;
+}
+.newsletter-wrapper.bg_cover {
+  opacity: 1;
+  transform: none;
+}
+
+/* aboutus start */
+.faq-content-box-one {
+  margin-left: 0;
+}
+.about_top_rgt_img {
+  overflow: hidden;
+}
+.pt-tabs-1 .nav-tabs .nav-item {
+  flex: auto;
+  font-size: 16px;
+  line-height: 16px;
+  display: block;
+  padding: 15px;
+}
+.pt-tabs-1 .nav-tabs .nav-item.active::after {
+display:none;
+}
+.about-widge {
+  opacity: 1 !important;
+  transform: none;
+}
+/* service start */
+.row.even_row_flow_items {
+  flex-direction: column-reverse;
+}
+.pt-process-2 .pt-before-img {
+  display: none;
+}
+.galllery_section .row.masonry-row {
+  height: unset !important;
+}
+.galllery_section .col-lg-6.portfolio-column {
+  position: unset !important;
+}
+.contact-style-three .contact-wrapper, .contact-style-one .contact-wrapper {
+  background-color: #fff;
+  padding: 40px 15px 30px;
+}
+.contact-style-three .contact-form .form_control, .contact-style-one .contact-form .form_control {
+  height: 55px;
+  padding: 0 15px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+.col-md-4.col-6.counter-column {
+  width: 100%;
+  max-width: 100%;
+  flex: unset;
+}
+.check-list li {
+  width: 100% !important;
+}
+
+}
+/************************ custom mobile responsive end ************************/
 

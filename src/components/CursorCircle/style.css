@@ -25,8 +25,10 @@ body {
   .cursor--small {
     width: 20px;
     height: 20px;
-    left: -2.5px;
-    top: -2.5px;
+    /* left: -2.5px;
+    top: -2.5px; */
+    left: -9px;
+top: -8px;
     border-radius: 50%;
     z-index: 11000;
     /* background: green; */

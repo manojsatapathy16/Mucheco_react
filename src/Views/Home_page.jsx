@@ -117,6 +117,39 @@ function Home_page(props) {
     }
     ]
 
+    const options = {
+        responsive: {
+            0: {
+                items: 1,
+            },
+            400: {
+                items: 1,
+            },
+            600: {
+                items: 2,
+            },
+            700: {
+                items: 3,
+            }
+        },
+    };
+    const portfolio_slider = {
+        responsive: {
+            0: {
+                items: 1,
+            },
+            400: {
+                items: 1,
+            },
+            600: {
+                items: 2,
+            },
+            700: {
+                items: 2,
+            }
+        },
+    };
+
 
     return (
         <>
@@ -255,7 +288,7 @@ function Home_page(props) {
                     </div>
                     {/* <!-- Slider --> */}
                     <div className="" id="case_studyy">
-                        <OwlCarousel className='owl-theme' items={3} loop margin={30} nav autoplay={true}>
+                        <OwlCarousel className='owl-theme' loop margin={30} nav autoplay={true} {...options}>
                             {Array.isArray(caseStudyData?.data) ? <>
                                 {caseStudyData?.data.map((each, key) => {
 
@@ -409,7 +442,7 @@ function Home_page(props) {
                     </div>
                     {/* <!-- Slider --> */}
                     <div className="" id="portfolioo">
-                        <OwlCarousel className='owl-theme' items={2} loop margin={30} nav autoplay={true}>
+                        <OwlCarousel className='owl-theme'  loop margin={30} nav autoplay={true} {...portfolio_slider}>
                             {Array.isArray(testimonialData?.data) ? <>
                                 {testimonialData?.data?.map((each, key) => {
                                     return (
@@ -454,7 +487,7 @@ function Home_page(props) {
                     </div>
                     {/* <!-- Slider --> */} 
                     <div className="" id="news_blog">
-                        <OwlCarousel className='owl-theme' items={3} loop margin={30} nav autoplay={true}>
+                        <OwlCarousel className='owl-theme' items={3} loop margin={30} nav autoplay={true} {...options}>
                         {Array.isArray(blogData?.data) ? <>
                             {blogData?.data.map((each, key) => {
                                 return (

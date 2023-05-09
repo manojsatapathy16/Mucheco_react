@@ -11,6 +11,24 @@ function Ourdeliveryprocess(props) {
         helmet(api_type,setMetaData);
         window.scrollTo({top: 0, behavior: 'smooth'});
     }, [api_type])
+
+    const options = {
+        responsive: {
+            0: {
+                items: 1,
+            },
+            400: {
+                items: 1,
+            },
+            600: {
+                items: 2,
+            },
+            700: {
+                items: 3,
+            }
+        },
+    };
+    
  
   return (
     <>
@@ -230,7 +248,7 @@ function Ourdeliveryprocess(props) {
             </div>
             {/* <!-- Slider --> */}
             <div id="our_work_process">
-            <OwlCarousel className='owl-theme' items={3} loop margin={10} nav autoplay ={true}>
+            <OwlCarousel className='owl-theme' loop margin={10} nav autoplay ={true} {...options}>
                 <div className="item">
                     <div className="pt-fancybox-boxslider fancyslider-2 ">
                         <div className="pt-fancy-media"><img src={require("../../image/project_planning.png")} alt=""/>

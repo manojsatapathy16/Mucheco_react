@@ -35,7 +35,10 @@ export default function OurCustomer(props) {
                         <span className="sub-title sub-title-bg blue-light-bg">Our Customers</span>
                         <h2 className="">Some of our customers </h2>
                     </div>
-                    <div className="brands">
+                    
+                    {/* <a href="#" className="main-btn btn btn-purple wow fadeInUp about_brand_morebtn">load more</a> */}
+                </div>
+                <div className="brands">
                         {Array.isArray(ourCustomerData?.data) ? <>
                             {ourCustomerData?.data?.map((each, key) => {
                                 return (
@@ -46,8 +49,6 @@ export default function OurCustomer(props) {
                             })}
                         </> : null}
                     </div>
-                    {/* <a href="#" className="main-btn btn btn-purple wow fadeInUp about_brand_morebtn">load more</a> */}
-                </div>
             </div>
         </div>
 

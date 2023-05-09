@@ -2,11 +2,27 @@ import React from 'react';
 import OwlCarousel from 'react-owl-carousel';
 
 export default function Testimonial(props) {
+    const options = {
+        responsive: {
+            0: {
+                items: 1,
+            },
+            400: {
+                items: 1,
+            },
+            600: {
+                items: 2,
+            },
+            700: {
+                items: 3,
+            }
+        },
+    };
 
     return (
         
 
-        <OwlCarousel className='owl-theme' items={3} loop margin={30} nav autoplay ={true}>
+        <OwlCarousel className='owl-theme' loop margin={30} nav autoplay ={true} {...options}>
             <>
                             {props?.data?.map((each, key) => {
                                 return (

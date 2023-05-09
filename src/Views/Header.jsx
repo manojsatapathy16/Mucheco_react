@@ -43,6 +43,10 @@ function Header(props) {
         setSessionData(sessondata)
       }
 
+      const togglenavHandler=()=>{
+         document.querySelector('#header_nav1').classList.toggle("active");
+      }
+
     return (
         <>
             {/* <!--====== Start Preloader ======--> */}
@@ -81,7 +85,7 @@ function Header(props) {
                                     {/* <img src={require("../image/logo-1.png")} alt="Site Logo" /> */}
                                 </NavLink>
                             </div>
-                            <div className="nav-menu">
+                            <div id='header_nav1' className="nav-menu">
                                 {/* <!-- Navbar Close --> */}
                                 <div className="navbar-close"><i className="far fa-times"></i></div>
                                 {/* <!-- Nav Search --> */}
@@ -172,6 +176,9 @@ function Header(props) {
 
                                 </nav>
 
+                            </div>
+                            <div className="nav_toggle_button" onClick={togglenavHandler}>
+                            <img src={require("../image/menu_icons/menu.png")} alt="toggle_menu" />
                             </div>
 
                         </div>
