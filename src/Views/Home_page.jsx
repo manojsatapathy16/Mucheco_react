@@ -93,6 +93,7 @@ function Home_page(props) {
 
     const readmoreHandler = (e) => {
         const clickedId = e.target.id;
+        console.log(clickedId,'homepage----------')
       
         navigate('/about/case-study/caseStudy-details', { state: { id: clickedId } });
     }
@@ -293,14 +294,14 @@ function Home_page(props) {
                                 {caseStudyData?.data.map((each, key) => {
 
                                     return (
-                                        <div className="item" >
+                                        <div key={key.toString()} className="item" >
                                             <div className="case_study_img_wrap">
                                             <img src={each.card_image} alt="" width="100%" />
                                             </div>
                                             <div className="case_img_overtxt" onClick={readmoreHandler} id={each.id}>
-                                                <div className="case_img_overtxt_details">
-                                                    <h3>{each.site_name}</h3>
-                                                    <p>{each.site_work}</p>
+                                                <div className="case_img_overtxt_details" >
+                                                    <h3 onClick={readmoreHandler} id={each.id}>{each.site_name}</h3>
+                                                    <p onClick={readmoreHandler} id={each.id}>{each.site_work}</p>
                                                 </div>
                                             </div>
                                         </div>

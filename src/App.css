@@ -1427,6 +1427,10 @@ display:none;
 .check-list li {
   width: 100% !important;
 }
+/* portfolio start */
+.filter-btn {
+  flex-wrap: wrap;
+}
 
 }
 /************************ custom mobile responsive end ************************/

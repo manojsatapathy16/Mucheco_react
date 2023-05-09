@@ -23,7 +23,7 @@ function CaseStudy_Details(props) {
     }, [api_type])
 
     const idFrom_PrevPage = location?.state?.id;
-    // console.log(idFrom_PrevPage,'ids from home page...........')
+    console.log(idFrom_PrevPage,'ids from home page...........')
 
 
     const getBlogByID = async () => {
@@ -40,11 +40,11 @@ function CaseStudy_Details(props) {
                 
             } else {
                 setLoading(true)
-                setTimeout(() => {navigate("/about/case-study");},5000);
+                setTimeout(() => {navigate("/about/case-study");},12000);
             }
         } catch (e) {
             setLoading(true)
-            setTimeout(() => {navigate("/about/case-study");},5000);
+            setTimeout(() => {navigate("/about/case-study");},12000);
             
         }
 
