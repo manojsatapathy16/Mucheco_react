@@ -584,7 +584,7 @@ function ServiceDetails(props) {
                         <div className="row justify-content-center">
                             <div className="col-lg-8">
                                 <div className="cta-content-box text-center wow fadeInUp">
-                                    <h2>Ready To Get Our Design Services ?</h2>
+                                    <h2>Ready To Get Our Services ?</h2>
                                     <ul className="button">
                                         <li><Link to="/Contact" className="main-btn btn-blue-light">Contact Us</Link></li>
                                         <li><a href="service-1.html" className="main-btn btn-purple">Our services</a></li>

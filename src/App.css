@@ -85,7 +85,7 @@ span.sub-title:hover {text-decoration: none;}
 
 .newsletter-style-one .newsletter-wrapper .newsletter-content-box .content h2 {font-size: 38px;font-weight: 600;}
 
-.newsletter-style-one .newsletter-wrapper {padding: 40px 70px 40px;z-index: unset;border-radius: 10px;}
+.newsletter-style-one .newsletter-wrapper {padding:40px;z-index: unset;border-radius: 10px;}
 
 .newsletter-area.newsletter-style-one {position: absolute;width: 100%;top: -60px;}
 
@@ -1152,6 +1152,10 @@ font-family: 'Font Awesome 5 Pro';
 .nav_toggle_button {
   width: 30px;
   display: none;
+}
+.newsletter-inn{
+  display: flex;
+  justify-content: space-between;
 }
 /************************ custom mobile responsive start ************************/
 @media only screen and (max-width: 480px) {

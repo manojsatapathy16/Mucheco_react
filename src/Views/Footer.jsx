@@ -30,8 +30,8 @@ function Footer() {
     <section className="newsletter-area newsletter-style-one">
         <div className="container">
             <div className="newsletter-wrapper bg_cover wow fadeInDown" data-aos="fade-down" data-aos-duration="1000">
-                <div className="row">
-                    <div className="col-lg-7">
+                <div className="newsletter-inn">
+                    <div className="">
                         <div className="newsletter-content-box">
                          
                             <div className="content">
@@ -39,7 +39,7 @@ function Footer() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-lg-5">
+                    <div className="">
                         <div className="newsletter-form">
                             <form>
                                 <div className="form_group">
@@ -143,9 +143,8 @@ function Footer() {
                 </div>
             </div>
             <div className="footer-copyright footer-copyright-bottom">
-               <p>DISCLAIMER: mucheco.com, nor its operators are affiliated with or funded by Amazon.com, Inc in any way.
-
-                Copyright © {date} mucheco</p>
+               <p className='disclamer_footer'>DISCLAIMER: mucheco.com, nor its operators are affiliated with or funded by Amazon.com, Inc in any way.</p>
+               <p className='copy_rgt'>Copyright © {date} mucheco</p>
             </div>
         </div>
         {isScroll?(<span className='scrollToTop' onClick={scrollToTop}>scroll to top</span>):(null)}
