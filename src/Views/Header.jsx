@@ -1,6 +1,6 @@
 // import { React } from 'react';
 import React, { useState, useEffect } from 'react';
-import { NavLink, Outlet,useNavigate } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import BreadCrumbs from '../components/BreadCrumbs';
 import { Image } from '../Constants/ImagePaths';
 import Firstcome from '../components/Firstcome';
@@ -9,43 +9,70 @@ import Firstcome from '../components/Firstcome';
 
 function Header(props) {
 
-    const[sessionData,setSessionData]=useState('')
-    const [ spinner, setSpinner ] = useState(true);
-    const navigate = useNavigate();
+    const [sessionData, setSessionData] = useState('')
+    const [spinner, setSpinner] = useState(true);
+    const [success, setIsSuccess] = useState('');
 
+    const navigate = useNavigate();
+    // console.log(success,'header seasson data')
     // check network connection start
     const [status, setStatus] = useState(() => {
         if (navigator.onLine) {
-          return true;
+            return true;
         } else {
-          return false;
+            return false;
         }
-      });
-      useEffect(() => {
+    });
+    useEffect(() => {
         window.ononline = (e) => {
-          setStatus(true);
+            setStatus(true);
         };
         window.onoffline = (e) => {
-          alert("Network connection lost.Please once check your connection.");
-          setStatus(false);
-          navigate("/");
+            alert("Network connection lost.Please once check your connection.");
+            setStatus(false);
+            navigate("/");
         };
-      }, [status]);
-// check network connection end
+    }, [status]);
+    // check network connection end
 
     useEffect(() => {
         setTimeout(() => setSpinner(false), 1000)
         getPopUp();
-      }, []);
+    }, []);
 
-      const getPopUp =async()=>{
-        const sessondata=await JSON.parse(sessionStorage.getItem('notshowagain'));
+    // success message condition start
+    useEffect(() => {
+
+        setTimeout(() => {
+            setIsSuccess(0)
+        }, 10000);
+    }, [success])
+    // success message condition end
+
+    const getPopUp = async () => {
+        const sessondata = await JSON.parse(sessionStorage.getItem('notshowagain'));
         setSessionData(sessondata)
-      }
+    }
 
-      const togglenavHandler=()=>{
-         document.querySelector('#header_nav1').classList.toggle("active");
-      }
+
+    //   outside click hide nav
+
+    window.addEventListener('mouseup', function (event) {
+        var nav_btn = document.getElementById('mob_nav_btn');
+        var nav = document.getElementById('header_nav1');
+        var arrow = document.querySelectorAll('.has-children-arrow');
+        var has_child1 = document.querySelector('#has-children1');
+        var has_child2 = document.querySelector('#has-children2');
+        if (event.target != nav && event.target.parentNode != nav && event.target != nav_btn &&
+             event.target.parentNode != nav_btn && event.target != has_child1 && event.target.parentNode != has_child1 &&
+              event.target != has_child2 && event.target.parentNode != has_child2 && event.target != arrow[0] &&
+               event.target.parentNode != arrow[0] && event.target != arrow[1] && event.target.parentNode != arrow[1]) {
+            document.querySelector('#header_nav1').classList.remove("active");
+        }
+    });
+    const togglenavHandler = () => {
+        document.querySelector('#header_nav1').classList.toggle("active");
+    }
 
     return (
         <>
@@ -57,7 +84,7 @@ function Header(props) {
                 </div>
             </div>}
             {/* <!--====== End Preloader ======--> */}
-           {sessionData === null?<Firstcome />:''}
+            {sessionData === null ? <Firstcome message={setIsSuccess} /> : ''}
             {/* <!--====== Search From ======--> */}
             <div className="modal fade" id="search-modal">
                 <div className="modal-dialog modal-dialog-centered" role="document">
@@ -101,42 +128,42 @@ function Header(props) {
                                 {/* <!-- Main Menu --> */}
                                 <nav className="main-menu">
                                     <ul>
-                                        <li className="menu-item has-children"><NavLink to='/about'>About us</NavLink>
+                                        <li className="menu-item has-children" id='has-children1'><NavLink to='/about'>About us</NavLink><span className='has-children-arrow'><i class="fas fa-chevron-down"></i></span>
                                             <ul className="sub-menu sub-menu_about">
-                                                <li><NavLink to='/about/why-choose-us'><img src={require("../image/menu_icons/choose-us.png")} alt="" /> Why Choose Us</NavLink></li>
-                                                <li><NavLink to='/about/our-delivery-process'><img src={require("../image/menu_icons/about.png")} alt="" /> Our Delivery Process</NavLink></li>
-                                                <li><NavLink to='/about/some-of-our-work'><img src={require("../image/menu_icons/our-team.png")} alt="" /> Some of Our Work</NavLink></li>
-                                                <li><NavLink to='/about/case-study'><img src={require("../image/menu_icons/Case-Study.png")} alt="" /> Case Study</NavLink></li>
-                                                <li><NavLink to='/about/career'><img src={require("../image/menu_icons/career.png")} alt="" /> Career</NavLink></li>
+                                                <li><NavLink to='/why-choose-us'><img src={require("../image/menu_icons/choose-us.png")} alt="" /> Why Choose Us</NavLink></li>
+                                                <li><NavLink to='/our-delivery-process'><img src={require("../image/menu_icons/about.png")} alt="" /> Our Delivery Process</NavLink></li>
+                                                <li><NavLink to='/some-of-our-work'><img src={require("../image/menu_icons/our-team.png")} alt="" /> Some of Our Work</NavLink></li>
+                                                <li><NavLink to='/case-study'><img src={require("../image/menu_icons/Case-Study.png")} alt="" /> Case Study</NavLink></li>
+                                                <li><NavLink to='/career'><img src={require("../image/menu_icons/career.png")} alt="" /> Career</NavLink></li>
                                             </ul>
                                         </li>
-                                        <li className="menu-item has-children"><NavLink to='/service'>Services</NavLink>
+                                        <li className="menu-item has-children" id='has-children2'><NavLink to='/service'>Services</NavLink><span className='has-children-arrow'><i class="fas fa-chevron-down"></i></span>
                                             <ul className="sub-menu">
                                                 <li className="extra_sub_menu_wrapper">
                                                     <h6>Development and Support</h6>
                                                     <ul className="extra_sub_menu">
-                                                        <li><NavLink to='/service/discovery-and-design'>Discovery and Design Service</NavLink></li>
-                                                        <li><NavLink to='/service/cloud-computing'>Cloud Transformation Services</NavLink></li>
-                                                        <li><NavLink to='/service/code-recovery-and-support'>code recovery & support</NavLink></li>
-                                                        <li><NavLink to='/service/digital-engineering'>Digital Engineering</NavLink></li>
+                                                        <li><NavLink to='/discovery-and-design'>Discovery & Design Service</NavLink></li>
+                                                        <li><NavLink to='/cloud-computing'>Cloud Transformation Services</NavLink></li>
+                                                        <li><NavLink to='/code-recovery-and-support'>code recovery & support</NavLink></li>
+                                                        <li><NavLink to='/digital-engineering'>Digital Engineering</NavLink></li>
                                                     </ul>
                                                 </li>
                                                 <li className="extra_sub_menu_wrapper">
                                                     <h6>digital marketing</h6>
                                                     <ul className="extra_sub_menu">
-                                                        <li><NavLink to='/service/search-engine-optimization'>search engine optimization</NavLink></li>
-                                                        <li><NavLink to='/service/social-media-optimization'>social media optimization</NavLink></li>
-                                                        <li><NavLink to='/service/app-store-optimization'>app store optimization</NavLink></li>
-                                                        <li><NavLink to='/service/pay-per-click'>pay per click</NavLink></li>
+                                                        <li><NavLink to='/search-engine-optimization'>search engine optimization</NavLink></li>
+                                                        <li><NavLink to='/social-media-optimization'>social media optimization</NavLink></li>
+                                                        <li><NavLink to='/app-store-optimization'>app store optimization</NavLink></li>
+                                                        <li><NavLink to='/pay-per-click'>pay per click</NavLink></li>
                                                     </ul>
                                                 </li>
                                                 <li className="extra_sub_menu_wrapper">
                                                     <h6>multichannel management</h6>
                                                     <ul className="extra_sub_menu">
-                                                        <li><NavLink to='/service/inventory-management'>inventory management</NavLink></li>
-                                                        <li><NavLink to='/service/order-management'>order management</NavLink></li>
-                                                        <li><NavLink to='/service/amazon-store-design-and-optimization'>amazon store design and optimization</NavLink></li>
-                                                        <li><NavLink to='/service/eBay-store-design-and-optimization'>eBay store design and optimization</NavLink></li>
+                                                        <li><NavLink to='/inventory-management'>inventory management</NavLink></li>
+                                                        <li><NavLink to='/order-management'>order management</NavLink></li>
+                                                        <li><NavLink to='/amazon-store-design-and-optimization'>amazon store design & optimization</NavLink></li>
+                                                        <li><NavLink to='/ebay-store-design-and-optimization'>eBay store design & optimization</NavLink></li>
                                                     </ul>
                                                 </li>
                                                 <li className="extra_sub_menu_wrapper">
@@ -148,8 +175,8 @@ function Header(props) {
                                             </ul>
                                         </li>
 
-                                        <li className="menu-item has-children">
-                                            <NavLink to='/Consultancy'>Consultancy</NavLink>
+                                        <li className="menu-item">
+                                            <NavLink to='/consultancy'>Consultancy</NavLink>
                                         </li>
                                         <li className="menu-item has-children"><a
                                             href="#">Platforms</a>
@@ -162,35 +189,37 @@ function Header(props) {
                                             </ul>
 
                                         </li>
-                                        <li className="menu-item has-children">
-                                            <NavLink to='/Portfolio'>Portfolio</NavLink>
+                                        <li className="menu-item">
+                                            <NavLink to='/portfolio'>Portfolio</NavLink>
                                         </li>
-                                        <li className="menu-item has-children">
+                                        <li className="menu-item">
                                             <NavLink to='/insight'>Insights</NavLink>
                                         </li>
 
 
                                     </ul>
-                                    <NavLink to='/Contact' className="contact_buttn">Let's talk</NavLink>
+                                    <NavLink to='/contact' className="contact_buttn">Let's talk</NavLink>
 
 
                                 </nav>
 
                             </div>
-                            <div className="nav_toggle_button" onClick={togglenavHandler}>
-                            <img src={require("../image/menu_icons/menu.png")} alt="toggle_menu" />
+                            <div className="nav_toggle_button" id="mob_nav_btn" onClick={togglenavHandler}>
+                                <img src={require("../image/menu_icons/menu.png")} alt="toggle_menu" />
                             </div>
 
                         </div>
                     </div>
                 </div>
+                {success ? (<p className='success_message firstcomeMessage'>Form Submitted Successfully,Our team will be in touch with you shortly.</p>) : ''}
             </header>
             {/* <!--====== End Header Section ======--> */}
             {/* hero section start */}
-          
-            {(props.class_bg=='black_bg')?<BreadCrumbs />:null}
+
+            {(props.class_bg == 'black_bg') ? <BreadCrumbs /> : null}
+
             {/* hero section end */}
-            <Outlet/>
+
         </>
     );
 }

@@ -131,7 +131,7 @@ function UploadBlog() {
                 <div className="menu_list">
 
                     <div>
-                        <div className='upload_btn' onClick={loginHandler} ><span><i class="fa fa-upload" aria-hidden="true"></i></span> Upload New Blog</div>
+                        <div className='upload_btn' onClick={loginHandler} ><span><i className="fa fa-upload" aria-hidden="true"></i></span> Upload New Blog</div>
                         {/* {(!isLogin) ? <span onClick={loginHandler} className="login_header">Admin Login</span> : (<span onClick={logoutHandler} className="login_header">Logout</span>)} */}
                     </div>
                     {(!isLoginClicked) ? '' : <div className="login_modal">

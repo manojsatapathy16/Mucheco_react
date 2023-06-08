@@ -134,13 +134,13 @@ function Portfolio(props) {
                                                     <div className="portfolio-img">
                                                         <img src={each?.image} alt="project Image" />
                                                         <div className="portfolio-img-overlay" onClick={() => { showFullImageHandle(each?.image) }}>
-                                                            <span><i class="far fa-search-plus"></i></span>
+                                                            <span><i className="far fa-search-plus"></i></span>
                                                         </div>
                                                     </div>
                                                     <div className="portfolio-content">
-                                                        <h3 className="title"><a href="project-details.html" className="">{each?.site_name}</a></h3>
-                                                        <a href="project-details.html" className="cat-btn">{each?.language}</a>
-                                                        <div><Link to={each?.site_link} className="view_project" target='_blank'>View Project <span><i class="far fa-long-arrow-right"></i></span></Link></div>
+                                                        <h3 className="title"><span className="">{each?.site_name}</span></h3>
+                                                        <span className="cat-btn">{each?.language}</span>
+                                                        <div><Link to={each?.site_link} className="view_project" target='_blank'>View Project <span><i className="far fa-long-arrow-right"></i></span></Link></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -152,13 +152,13 @@ function Portfolio(props) {
                                                     <div className="portfolio-img">
                                                         <img src={each?.image} alt="project Image" />
                                                         <div className="portfolio-img-overlay" onClick={() => { showFullImageHandle(each?.image) }}>
-                                                            <span><i class="far fa-search-plus"></i></span>
+                                                            <span><i className="far fa-search-plus"></i></span>
                                                         </div>
                                                     </div>
                                                     <div className="portfolio-content">
-                                                        <h3 className="title"><a href="" className="">{each?.site_name}</a></h3>
-                                                        <a href="" className="cat-btn">{each?.language}</a>
-                                                        <div><Link to={each?.site_link} className="view_project" target='_blank'>View Project <span><i class="far fa-long-arrow-right"></i></span></Link></div>
+                                                        <h3 className="title"><span  className="">{each?.site_name}</span></h3>
+                                                        <span className="cat-btn">{each?.language}</span>
+                                                        <div><Link to={each?.site_link} className="view_project" target='_blank'>View Project <span><i className="far fa-long-arrow-right"></i></span></Link></div>
                                                     </div>
                                                 </div>
                                             </div>

@@ -4,7 +4,9 @@ const BASE_URL = 'https://new.mucheco.com/admin_mucheco';
 // const BASE_URL = 'http://88.208.224.110/mucheco_react/admin';
 // export const basename='/ebsMntTst/muchecoTest/new_mucheco_react/#';
 // export const basename='/mucheco_react/#';
-export const basename='new.mucheco.com/#';
+// export const basename='new.mucheco.com';
+// export const basename='/mucheco_react/';
+export const basename='/';
 
 export const API = {
     PORTFOLIO: BASE_URL + '/api/portfolio.php',

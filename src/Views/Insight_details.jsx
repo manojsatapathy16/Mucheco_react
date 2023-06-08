@@ -4,7 +4,7 @@ import Loader from '../components/Loader';
 import { CallApi_Without_Token } from '../Services/Client';
 import { API } from '../Services/Apis';
 import { Helmet } from "react-helmet";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {helmet} from '../Utils/Utils';
 
 
@@ -72,7 +72,7 @@ function Insight_details(props) {
 
                                             <div className="post-meta">
                                                 <ul>
-                                                    <li><span><i className="far fa-calendar-alt"></i><a href="#">{detailsData?.data?.created_at}</a></span></li>
+                                                    <li><span><i className="far fa-calendar-alt"></i><Link href="#">{detailsData?.data?.created_at}</Link></span></li>
                                                 </ul>
                                             </div>
                                             <h3 className="title">{detailsData?.data?.title}</h3>

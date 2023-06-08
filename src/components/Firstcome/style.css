@@ -124,3 +124,18 @@
     width: 100%;
     padding: 10px;
   }
+  .success_message.firstcomeMessage {
+    position: absolute;
+    left: 0;
+    top: 84px;
+    z-index: 9;
+    background: #37ad46ad;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+  }
+  @media only screen and (max-width: 480px){
+  .login_modal form {
+    width: 100%;
+  }
+}

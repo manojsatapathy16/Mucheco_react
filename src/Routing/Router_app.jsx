@@ -29,7 +29,7 @@ function Router_app() {
 
   return (
     <>
-      <HashRouter>
+      {/* <HashRouter>
 
 
 
@@ -72,80 +72,53 @@ function Router_app() {
 
 
 
-        {/* <Route path='about' element={<About />} >
-          
-           <Route path='why-choose-us' element={<WhychooseUs />} />
-           <Route path='our-delivery-process' element={<Ourdeliveryprocess />} />
-           <Route path='some-of-our-work' element={<SomeOfOurWork />} />
-           <Route path='case-study' element={<CaseStudy />} />
-           <Route path='CaseStudy/CaseStudy_Details' element={<CaseStudy_Details />} />
-           <Route path='career' element={<Career />} />
-       </Route>
-  
-       <Route path='service/discovery-and-design' element={<ServiceDetails type='development_support' />} />
-       <Route path='service/cloud-computing' element={<ServiceDetails type='cloud_transformation' />} />
-       <Route path='service/code-recovery-and-support' element={<ServiceDetails type='code_recovery' />} />
-       <Route path='service/digital-engineering' element={<ServiceDetails type='digital_engineering' />} />
-       <Route path='service/search-engine-optimization' element={<ServiceDetails type='seo' />} />
-       <Route path='service/social-media-optimization' element={<ServiceDetails type='smo' />} />
-       <Route path='service/app-store-optimization' element={<ServiceDetails type='aso' />} />
-       <Route path='service/pay-per-click' element={<ServiceDetails type='ppc' />} />
-       <Route path='service/inventory-management' element={<ServiceDetails type='inventory_management' />} />
-       <Route path='service/order-management' element={<ServiceDetails type='order_management' />} />
-       <Route path='service/amazon-store-design-and-optimization' element={<ServiceDetails type='asdo' />} />
-       <Route path='service/eBay-store-design-and-optimization' element={<ServiceDetails type='esdo' />} />
-
-       <Route path='consultancy' element={<Consultancy />} />
-       <Route path='portfolio' element={<Portfolio />} />
-       <Route path='insight' element={<Insight />} />
-       <Route path='contact' element={<Contact />} />
-       <Route path='insight/insight-details' element={<Insight_details />} />
-       <Route path='*' element={<Error />} />
-     */}
 
         
 
 <Footer />
-      </HashRouter>
+      </HashRouter> */}
 
-      {/* <BrowserRouter basename={basename}>
+      <BrowserRouter basename={basename}>
      
-          <Routes>
-            <Route path='/' element={<Home_page />} />
+      <Routes>
+          <Route path='/' element={<Home_page  type='home'/>} />
+          <Route path='/about' element={<About  type='about-us'/>} />
+          <Route path='/why-choose-us' element={<WhychooseUs type='why-choose-us'/>} />
+          <Route path='/our-delivery-process' element={<Ourdeliveryprocess type='our-delivery-process'/>} />
+          <Route path='/some-of-our-work' element={<SomeOfOurWork type='some-of-our-work'/>} />
+          <Route path='/case-study' element={<CaseStudy type='case-study'/>} />
+          <Route path='/caseStudy-details' element={<CaseStudy_Details type='CaseStudy_Details' />} />
+          <Route path='/career' element={<Career type='career' />} />
+          <Route path='/service' element={<ServiceDetails type='discovery-and-design-service' />} />
+          <Route path='/discovery-and-design' element={<ServiceDetails type='discovery-and-design-service' />} />
+          <Route path='/cloud-computing' element={<ServiceDetails type='cloud-transformation-services' />} />
+          <Route path='/code-recovery-and-support' element={<ServiceDetails type='code-recovery-and-support' />} />
+          <Route path='/digital-engineering' element={<ServiceDetails type='digital-engineering' />} />
+          <Route path='/search-engine-optimization' element={<ServiceDetails type='search-engine-optimization' />} />
+          <Route path='/social-media-optimization' element={<ServiceDetails type='social-media-optimization' />} />
+          <Route path='/app-store-optimization' element={<ServiceDetails type='app-store-optimization' />} />
+          <Route path='/pay-per-click' element={<ServiceDetails type='pay-per-click' />} />
+          <Route path='/inventory-management' element={<ServiceDetails type='inventory-management' />} />
+          <Route path='/order-management' element={<ServiceDetails type='order-management' />} />
+          <Route path='/amazon-store-design-and-optimization' element={<ServiceDetails type='amazon-store-design-and-optimization' />} />
+          <Route path='/ebay-store-design-and-optimization' element={<ServiceDetails type='ebay-store-design-and-optimization' />} />
 
-            <Route path='about' element={<About />} >
-               
-                <Route path='why-choose-us' element={<WhychooseUs />} />
-                <Route path='our-delivery-process' element={<Ourdeliveryprocess />} />
-                <Route path='some-of-our-work' element={<SomeOfOurWork />} />
-                <Route path='case-study' element={<CaseStudy />} />
-                <Route path='CaseStudy/CaseStudy_Details' element={<CaseStudy_Details />} />
-                <Route path='career' element={<Career />} />
-            </Route>
-       
-            <Route path='service/discovery-and-design' element={<ServiceDetails type='development_support' />} />
-            <Route path='service/cloud-computing' element={<ServiceDetails type='cloud_transformation' />} />
-            <Route path='service/code-recovery-and-support' element={<ServiceDetails type='code_recovery' />} />
-            <Route path='service/digital-engineering' element={<ServiceDetails type='digital_engineering' />} />
-            <Route path='service/search-engine-optimization' element={<ServiceDetails type='seo' />} />
-            <Route path='service/social-media-optimization' element={<ServiceDetails type='smo' />} />
-            <Route path='service/app-store-optimization' element={<ServiceDetails type='aso' />} />
-            <Route path='service/pay-per-click' element={<ServiceDetails type='ppc' />} />
-            <Route path='service/inventory-management' element={<ServiceDetails type='inventory_management' />} />
-            <Route path='service/order-management' element={<ServiceDetails type='order_management' />} />
-            <Route path='service/amazon-store-design-and-optimization' element={<ServiceDetails type='asdo' />} />
-            <Route path='service/eBay-store-design-and-optimization' element={<ServiceDetails type='esdo' />} />
-     
-            <Route path='consultancy' element={<Consultancy />} />
-            <Route path='portfolio' element={<Portfolio />} />
-            <Route path='insight' element={<Insight />} />
-            <Route path='contact' element={<Contact />} />
-            <Route path='insight/insight-details' element={<Insight_details />} />
-            <Route path='*' element={<Error />} />
-          </Routes>
+          <Route path='/consultancy' element={<Consultancy type='consultancy'/>} />
+          <Route path='/portfolio' element={<Portfolio type='portfolio'/>} />
+          <Route path='/insight' element={<Insight type='insights'/>} />
+          <Route path='/contact' element={<Contact type='contact'/>} />
+          <Route path='/:slug' element={<Insight_details />} />
+          <Route path='/faq' element={<Faq type='faq'/>} />
+          <Route path='/privacy-policy' element={<Privacy_policy />} />
+          <Route path='/disclaimer' element={<Disclaimer/>} />
+          <Route path='/quality-policy' element={<Quality_policy />} />
+          <Route path='/terms-of-use' element={<Term_of_use />} />
+          <Route path='*' element={<Error />} />
+
+        </Routes>
        
         <Footer />
-      </BrowserRouter> */}
+      </BrowserRouter>
 
     </>
   );

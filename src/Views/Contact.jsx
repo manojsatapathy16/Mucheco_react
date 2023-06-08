@@ -2,20 +2,29 @@ import React, { useState ,useEffect,useLayoutEffect } from 'react';
 import Header from './Header';
 import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom';
+import { API } from '../Services/Apis';
 function Contact() {
   
   const initialValues = { firstname: '',lastname: '',phone:'', email: '',lead:'',website:'', message:'' };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-  const [isSuccess,setIsSuccess] = useState({})
+  const [isSuccess,setIsSuccess] = useState({});
+  const [showMessage, setShowMessage] = useState(0);
  
   useLayoutEffect(() => {
-   
     window.scrollTo({top: 1, behavior: 'smooth'});
-  
-
     }, []);
+    // console.log(isSuccess,'contact page')
+
+    useEffect(()=>{
+        if(showMessage==1){
+            setTimeout(()=>{
+                setShowMessage(0)
+            }, 10000);
+        }
+        },[showMessage])
+
 // onchange handler
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,9 +53,15 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("http://88.208.224.110/mucheco2023api/api/contact_us.php", requestOptions)
-  .then(response => response.text())
-  .then(result => setIsSuccess(JSON.parse(result)))
+fetch(API.CONTACT_US, requestOptions)
+.then(response => response.json())
+.then(json => {setIsSuccess(json)
+    setShowMessage(json.status)
+})
+
+
+//   .then(response => response.text())
+//   .then(result => setIsSuccess(JSON.parse(result)))
   .catch(error => console.log('error', error));
     
 }
@@ -134,8 +149,8 @@ fetch("http://88.208.224.110/mucheco2023api/api/contact_us.php", requestOptions)
                                         </div>
                                         <div className="text">
                                             <h5>Our Hotlines</h5>
-                                            <p><span>Mobile :</span><a href="tel:+442030049800"> UK +44 203 004 9800</a></p>
-                                            <p><span>Phone :</span><a href="tel:+17329317070">USA +1 732 931 7070</a></p>
+                                            <p><span>Mobile :</span><Link href="tel:+442030049800"> UK +44 203 004 9800</Link></p>
+                                            <p><span>Phone :</span><Link href="tel:+17329317070">USA +1 732 931 7070</Link></p>
                                         </div>
                                     </div>
                                 </div>
@@ -163,7 +178,7 @@ fetch("http://88.208.224.110/mucheco2023api/api/contact_us.php", requestOptions)
                                         <div className="text">
                                             <h5>Email Address</h5>
                                             
-                                            <p><a href="#">sales@mucheco.com</a></p>
+                                            <p><Link href="#">sales@mucheco.com</Link></p>
                                         </div>
                                     </div>
                                 </div>
@@ -212,7 +227,7 @@ fetch("http://88.208.224.110/mucheco2023api/api/contact_us.php", requestOptions)
                         <div className="col-lg-12">
                             <div className="contact-form wow fadeInUp">
                                 <form onSubmit={handleSubmit}>
-                                {(isSuccess.status==1)?(<p classNameName='success_message'>{isSuccess.message}</p>):null}
+                                {showMessage ? (<p className='success_message'>{isSuccess.message} Our team will be in touch with you shortly.</p>) : null}
                                     <div className="row justify-content-center">
                                         <div className="col-lg-6 col-md-6 col-sm-12">
                                             <div className="form_group">

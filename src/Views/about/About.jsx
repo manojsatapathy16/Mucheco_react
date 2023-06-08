@@ -3,7 +3,7 @@ import Header from '../Header';
 import OwlCarousel from 'react-owl-carousel';
 import testimonial from '../../image/testimonial-bg-1.jpg';
 import { Helmet } from "react-helmet";
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import {helmet} from '../../Utils/Utils';
 import OurCustomer from '../../components/OurCustomer';
 import Testimonial from '../../components/Testimonial';
@@ -120,9 +120,9 @@ function About(props) {
                                 <div className="faq-accordian faq-accordian-two wow fadeInUp" id="accordianOne" >
                                     <div className="card">
                                         <div className="card-header">
-                                            <a href="#" className="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true">
+                                            <Link href="#" className="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true">
                                                 Our Mission:
-                                            </a>
+                                            </Link>
                                         </div>
                                         <div id="collapseOne" className="collapse show" data-parent="#accordianOne">
                                             <div className="card-body">
@@ -139,9 +139,9 @@ function About(props) {
                                     </div>
                                     <div className="card">
                                         <div className="card-header">
-                                            <a href="#" className="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false">
+                                            <Link href="#" className="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false">
                                                 Our Vision:
-                                            </a>
+                                            </Link>
                                         </div>
                                         <div id="collapseTwo" className="collapse" data-parent="#accordianOne">
                                             <div className="card-body">
@@ -159,9 +159,9 @@ function About(props) {
                                     </div>
                                     <div className="card">
                                         <div className="card-header">
-                                            <a href="#" className="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false">
+                                            <Link href="#" className="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false">
                                                 Our Values
-                                            </a>
+                                            </Link>
                                         </div>
                                         <div id="collapseThree" className="collapse" data-parent="#accordianOne">
                                             <div className="card-body">

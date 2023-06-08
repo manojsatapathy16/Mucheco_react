@@ -78,7 +78,7 @@ function Insight(props) {
 
     const readmoreHandler = (each) => {
         const slug=each.slug;
-        navigate(`/insight/${slug}`);
+        navigate(`/${slug}`);
     }
 
 
@@ -123,7 +123,7 @@ function Insight(props) {
 
                                                             </ul>
                                                         </div>
-                                                        {each?.title ? <h3 className="title"><a href="blog-details.html" dangerouslySetInnerHTML={{ __html: each.title }}></a></h3> : null}
+                                                        {each?.title ? <h3 className="title"><Link to="" dangerouslySetInnerHTML={{ __html: each.title }}></Link></h3> : null}
                                                         {each?.short_description ? <p dangerouslySetInnerHTML={{ __html: each.short_description }}></p> : null}
                                                         <span onClick={()=>readmoreHandler(each)} id={each.id} className="main-btn filled-btn">Read More</span>
                                                     </div>
