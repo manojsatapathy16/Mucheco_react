@@ -54,7 +54,7 @@ function Insight(props) {
 
         } else {
             setLoading(true);
-            setTimeout(() => {navigate("/");},5000);
+            // setTimeout(() => {navigate("/");},5000);
         }
     }
         catch(e){ 

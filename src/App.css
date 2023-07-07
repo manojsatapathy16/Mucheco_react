@@ -774,6 +774,9 @@ line-height: 0
 .square_icon~.text h3 {width: 80%;}
 
 .justify_txt {text-align: justify;}
+.How_can_we_help .check-list li{
+  width: 100%;
+}
 
 /********************************** why choose us end **********************************/
 /********************************** contact start **********************************/
@@ -1648,3 +1651,6 @@ div.faq-accordian-two .card div.card-header a[aria-expanded]::after {
 }
 /************************ custom mobile responsive end ************************/
 
+/* .contact_form11 .submitColor{
+  background-color: red;
+} */
