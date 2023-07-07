@@ -3,6 +3,7 @@ import Header from './Header';
 import React, { useEffect, useState } from 'react';
 import { CallApi_Without_Token } from '../Services/Client';
 import { API } from '../Services/Apis';
+import { Link } from 'react-router-dom';
 
 function Faq() {
     const [faqData, setFaqData] = useState([]);
@@ -47,10 +48,10 @@ function Faq() {
                                 return (
                                   key ? <div className="card">
                                   <div className="card-header">
-                                      <a href="#" className="collapsed circle_pointer" data-toggle="collapse" data-target={ `#collapse${key}` } aria-expanded="true" >
+                                      <Link href="#" className="collapsed circle_pointer" data-toggle="collapse" data-target={ `#collapse${key}` } aria-expanded="true" >
                                           {each.question}
                                   
-                                      </a>
+                                      </Link>
                                   </div>
                                   <div id={ `collapse${key}` } className="collapse" data-parent="#accordianOne">
                                       <div className="card-body">
@@ -59,10 +60,10 @@ function Faq() {
                                   </div>
                               </div>: <div className="card">
                               <div className="card-header">
-                                  <a href="#" className="collapsed circle_pointer" data-toggle="collapse" data-target={ `#collapse${key}` } aria-expanded="true" >
+                                  <Link href="#" className="collapsed circle_pointer" data-toggle="collapse" data-target={ `#collapse${key}` } aria-expanded="true" >
                                       {each.question}
                               
-                                  </a>
+                                  </Link>
                               </div>
                               <div id={ `collapse${key}` } className="collapse show" data-parent="#accordianOne">
                                   <div className="card-body">

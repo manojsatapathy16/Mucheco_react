@@ -6,12 +6,13 @@ import Loader from '../components/Loader';
 import { CallApi_Without_Token } from '../Services/Client';
 import { API } from '../Services/Apis';
 import { Helmet } from "react-helmet";
-import {helmet} from '../Utils/Utils';
-import { Link,useNavigate } from 'react-router-dom';
+import { helmet } from '../Utils/Utils';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function ServiceDetails(props) {
-    
+
+
     const api_type = props.type
     const [detailsData, setDetailsData] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -21,12 +22,17 @@ function ServiceDetails(props) {
     const [formErrors, setFormErrors] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
     const [isSuccess, setIsSuccess] = useState({})
+    const [showMessage, setShowMessage] = useState(0)
+    // const [start, setStart] = useState(1)
 
-    const[metaData,setMetaData]=useState('');
+    const [metaData, setMetaData] = useState('');
     const navigate = useNavigate();
-    useEffect( () => {
-        helmet(api_type,setMetaData);
+    useEffect(() => {
+        helmet(api_type, setMetaData);
+        isReadMoreOpen();
+        
     }, [api_type])
+    // console.log(isSuccess,'service')
 
     useLayoutEffect(() => {
         fetchInfo();
@@ -41,26 +47,34 @@ function ServiceDetails(props) {
         }
     }, [formErrors]);
 
+    useEffect(()=>{
+    if(showMessage==1){
+        setTimeout(()=>{
+            setShowMessage(0)
+        }, 10000);
+    }
+    },[showMessage])
+
     const fetchInfo = async () => {
-        try{
-        setLoading(true)
-        var formdata = new FormData();
-        formdata.append("request_type", api_type);
-        const data = await CallApi_Without_Token('POST', API.SERVICE_DETAILS, formdata)
-        setLoading(false)
-        if (data.status === 1) {
-            setDetailsData(data)
+        try {
+            setLoading(true)
+            var formdata = new FormData();
+            formdata.append("request_type", api_type);
+            const data = await CallApi_Without_Token('POST', API.SERVICE_DETAILS, formdata)
             setLoading(false)
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        } else {
-            setLoading(true);
-            setTimeout(() => {navigate("/about/case-study");},5000);
+            if (data.status === 1) {
+                setDetailsData(data)
+                setLoading(false)
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                setLoading(true);
+                setTimeout(() => { navigate("/about/case-study"); }, 5000);
+            }
         }
-    }
-    catch(e){ 
-        setLoading(true);
-        setTimeout(() => {navigate("/about/case-study");},5000);
-    }
+        catch (e) {
+            setLoading(true);
+            setTimeout(() => { navigate("/about/case-study"); }, 5000);
+        }
     }
     // onchange handler
     const handleChange = (e) => {
@@ -89,12 +103,21 @@ function ServiceDetails(props) {
             redirect: 'follow'
         };
 
-        fetch("http://88.208.224.110/mucheco2023api/api/contact_us.php", requestOptions)
-            .then(response => response.text())
-            .then(result => setIsSuccess(JSON.parse(result)))
+
+
+        fetch(API.CONTACT_US, requestOptions)
+        .then(response => response.json())
+        .then(json => {setIsSuccess(json)
+            setShowMessage(json.status)
+        })
+            // .then(response => response.text())
             .catch(error => console.log('error', error));
 
     }
+   
+
+
+
     // validate form
     const validate = (values) => {
         const errors = {};
@@ -118,22 +141,32 @@ function ServiceDetails(props) {
 
         return errors;
     };
-// read more read less
+    // read more read less
     function myFunction() {
-        var dots = document.getElementById("dots");
-        var moreText = document.getElementById("more");
         var btnText = document.getElementById("readmore");
-      
-        if (dots.style.display === "none") {
-          dots.style.display = "inline";
-          btnText.innerHTML = "Read more <i className='fal fa-long-arrow-right'></i>"; 
-          moreText.style.display = "none";
-        } else {
-          dots.style.display = "none";
-          btnText.innerHTML = "Read less"; 
-          moreText.style.display = "inline";
+        var short_description=document.getElementById("desc_short");
+        var long_description=document.getElementById("desc_long");
+        if (btnText.innerHTML.trim() == 'Read More <i class="fal fa-long-arrow-right"></i>') {
+            btnText.innerHTML = 'Read less <i class="fal fa-long-arrow-right"></i>';
+            long_description.style.display = "block";
+            short_description.style.display = "none";
+        } else if(btnText.innerHTML.trim() == 'Read less <i class="fal fa-long-arrow-right"></i>') {
+            btnText.innerHTML = 'Read More <i class="fal fa-long-arrow-right"></i>';
+            long_description.style.display = "none";
+            short_description.style.display = "block";
         }
-      }
+    }
+    function isReadMoreOpen() {
+        var btnText = document.getElementById("readmore");
+        var short_description=document.getElementById("desc_short");
+        var long_description=document.getElementById("desc_long");
+            if(btnText.innerHTML.trim() == 'Read less <i class="fal fa-long-arrow-right"></i>') {
+            btnText.innerHTML = 'Read More <i class="fal fa-long-arrow-right"></i>';
+            long_description.style.display = "none";
+            short_description.style.display = "block";
+        }
+    }
+    // console.log(detailsData?.data?.process.length)
 
     return (
         <>
@@ -142,10 +175,10 @@ function ServiceDetails(props) {
 
                 <Loader show={loading} />
                 <Helmet>
-                <title>{metaData?.data?.meta_title}</title>
-                <meta name="description" content={metaData?.data?.meta_description} />
-                <meta name="keywords" content={metaData?.data?.meta_keyword} />
-            </Helmet>
+                    <title>{metaData?.data?.meta_title}</title>
+                    <meta name="description" content={metaData?.data?.meta_description} />
+                    <meta name="keywords" content={metaData?.data?.meta_keyword} />
+                </Helmet>
 
                 {/* <!--====== Start About Section ======--> */}
                 <section className="fancy-about fancy-about-five pt-50 pb-80 my_fancy">
@@ -162,10 +195,8 @@ function ServiceDetails(props) {
                                             </div>
 
                                             <blockquote>
-                                                <p>{detailsData?.data?.readmore?.desc_short}
-                                                    <span id="dots">...</span><span id="more">
-                                                        {detailsData?.data?.readmore?.desc_long}</span>
-                                                </p>
+                                            <p id='desc_short'>{detailsData?.data?.readmore?.desc_short}</p>
+                                            <p id='desc_long' dangerouslySetInnerHTML={{__html: detailsData?.data?.readmore?.desc_long}}></p>
                                                 <button onClick={myFunction} id="readmore">Read More <i className="fal fa-long-arrow-right"></i></button>
                                             </blockquote>
                                             <ul className="check-list list-circle-bg mb-20 wow fadeInUp absolute_check">
@@ -383,6 +414,21 @@ function ServiceDetails(props) {
                             </div>
                         </div>
                         <div className="flow_items">
+                        {/* {detailsData?.data?.process.map((i, key) => {
+                            if (start >= 1 && start <= 3) {
+                                html += (start == 1) ? `<div class="row"><p>${i}</p>` : (start == 3) ? `<p>${i}</p></div>` : `<p>${i}</p>`;
+                              }
+                              if (start >= 4 && start <= 6) {
+                                html += start == 4 ? `<div class="even-row"><p>${i}</p>` : start == 6 ? `<p>${i}</p></div>` : `<p>${i}</p>`;
+                              }
+                              if (start == 6) {
+                                setStart(1);
+                              } else {
+                                setStart(start+1);
+                              }
+
+return (<></>);
+                        })} */}
                             <div className="row">
                                 <div className="col-lg-4">
                                     <div className="elementor-widget-container" data-aos="fade-right" data-aos-duration="400">
@@ -438,9 +484,9 @@ function ServiceDetails(props) {
                                 <div className="col-lg-4">
                                     <div className="elementor-widget-container" data-aos="fade-left" data-aos-duration="1400">
                                         <div className="pt-process-step pt-process-2">
-                                            {/* <!-- <img className="pt-before-img"
-                            src="image/arrow-2.png"
-                            alt="arrow-img"> --> */}
+                                        {detailsData?.data?.process.length>6?<img className="pt-before-img"
+                            src={require("../image/arrow-2.png")}
+                            alt="arrow-img"/> :''}
                                             <div className="pt-process-icon"><span><img src={require("../image/site_launch.png")} alt="" /></span><span
                                                 className="pt-process-number">{detailsData?.data?.process[5]?.sl}</span></div>
                                             <div className="pt-process-info">
@@ -483,8 +529,57 @@ function ServiceDetails(props) {
 
                                     </div>
                                 </div>
-
                             </div>
+                            {detailsData?.data?.process.length>6? <div className="row">
+                                <div className="col-lg-4">
+                                    <div className="elementor-widget-container" data-aos="fade-right" data-aos-duration="400">
+                                        <div className="pt-process-step pt-process-2">
+                                            <img className="pt-before-img"
+                                                src={require("../image/arrow-1.png")}
+                                                alt="arrow-img" />
+                                            <div className="pt-process-icon"><span><img src={require("../image/service_details/product-return.png")} alt="" /></span><span
+                                                className="pt-process-number">{detailsData?.data?.process[6]?.sl}</span></div>
+                                            <div className="pt-process-info">
+                                                <h4 className="pt-process-title">{detailsData?.data?.process[6]?.title}</h4>
+                                                <p className="pt-process-description">{detailsData?.data?.process[6]?.description}</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                {detailsData?.data?.process.length>=8? <div className="col-lg-4">
+                                    <div className="elementor-widget-container" data-aos="fade-right" data-aos-duration="600">
+                                        <div className="pt-process-step pt-process-2">
+                                            <img decoding="async" className="pt-before-img"
+                                                src={require("../image/arrow-2.png")}
+                                                alt="arrow-img" />
+                                            <div className="pt-process-icon"><span><img src={require("../image/service_details/inventory_optimisation.png")} alt="" /></span><span
+                                                className="pt-process-number">{detailsData?.data?.process[7]?.sl}</span></div>
+                                            <div className="pt-process-info">
+                                                <h4 className="pt-process-title">{detailsData?.data?.process[7]?.title}</h4>
+                                                <p className="pt-process-description">{detailsData?.data?.process[7]?.description}</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>:''}
+                                {detailsData?.data?.process.length>=9?  <div className="col-lg-4">
+                                    <div className="elementor-widget-container" data-aos="fade-right" data-aos-duration="800">
+                                        <div className="pt-process-step pt-process-2">
+                                            
+                                            <div className="pt-process-icon"><span><img src={require("../image/service_details/warehouse_management.png")} alt="" /></span><span
+                                                className="pt-process-number">{detailsData?.data?.process[8]?.sl}</span></div>
+                                            <div className="pt-process-info">
+                                                <h4 className="pt-process-title">{detailsData?.data?.process[8]?.title}</h4>
+                                                <p className="pt-process-description">{detailsData?.data?.process[8]?.description}</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>:''}
+                              
+
+                            </div>:''}
                         </div>
                     </div>
                 </section>
@@ -508,7 +603,7 @@ function ServiceDetails(props) {
                                         <img src={require("../image/service_details/mercato_place_home.png")} alt="portfolio image" />
                                         <div className="portfolio-hover">
                                             <div className="hover-content">
-                                                <Link to="https://mercatoplace.com/" target="_blank" className="img-popup"><i class="far fa-long-arrow-right"></i></Link>
+                                                <Link to="https://mercatoplace.com/" target="_blank" className="img-popup"><i className="far fa-long-arrow-right"></i></Link>
                                             </div>
                                         </div>
                                     </div>
@@ -524,7 +619,7 @@ function ServiceDetails(props) {
                                         <img src={require("../image/service_details/bookodisha_home.png")} alt="portfolio image" />
                                         <div className="portfolio-hover">
                                             <div className="hover-content">
-                                                <Link to="https://www.bookodisha.com/" target="_blank" className="img-popup"><i class="far fa-long-arrow-right"></i></Link>
+                                                <Link to="https://www.bookodisha.com/" target="_blank" className="img-popup"><i className="far fa-long-arrow-right"></i></Link>
                                             </div>
                                         </div>
                                     </div>
@@ -540,7 +635,7 @@ function ServiceDetails(props) {
                                         <img src={require("../image/service_details/holidays.jpg")} alt="portfolio image" />
                                         <div className="portfolio-hover">
                                             <div className="hover-content">
-                                                <Link to="https://www.clubpuertocolon.com/" target="_blank" className="img-popup"><i class="far fa-long-arrow-right"></i></Link>
+                                                <Link to="https://www.clubpuertocolon.com/" target="_blank" className="img-popup"><i className="far fa-long-arrow-right"></i></Link>
                                             </div>
                                         </div>
                                     </div>
@@ -556,7 +651,7 @@ function ServiceDetails(props) {
                                         <img src={require("../image/service_details/uk-pallet.jpg")} alt="portfolio image" />
                                         <div className="portfolio-hover">
                                             <div className="hover-content">
-                                                <Link to="https://www.ukpalletcommercialdeliveries.com/" target="_blank" className="img-popup"><i class="far fa-long-arrow-right"></i></Link>
+                                                <Link to="https://www.ukpalletcommercialdeliveries.com/" target="_blank" className="img-popup"><i className="far fa-long-arrow-right"></i></Link>
                                             </div>
                                         </div>
                                     </div>
@@ -587,7 +682,7 @@ function ServiceDetails(props) {
                                     <h2>Ready To Get Our Services ?</h2>
                                     <ul className="button">
                                         <li><Link to="/Contact" className="main-btn btn-blue-light">Contact Us</Link></li>
-                                        <li><a href="service-1.html" className="main-btn btn-purple">Our services</a></li>
+                                        <li><Link href="service-1.html" className="main-btn btn-purple">Our services</Link></li>
                                     </ul>
                                 </div>
                             </div>
@@ -609,6 +704,7 @@ function ServiceDetails(props) {
                                     <p>Get expert IT solutions to propel your business forward with our custom software development, e-commerce, and digital marketing services to help you succeed in the digital age.</p>
                                     <ul className="social-link">
                                         <li><Link to="https://www.facebook.com/muchecodotcom" target='_blank'><i className="fab fa-facebook-f"></i></Link></li>
+                                        <li><Link to="https://www.instagram.com/mucheco_ltd/" target='_blank'><i className="fab fa-instagram"></i></Link></li>
                                         <li><Link to="https://www.linkedin.com/company/mucheco" target='_blank'><i className="fab fa-linkedin"></i></Link></li>
                                         <li><Link to="https://twitter.com/muchecodotcom" target='_blank'><i className="fab fa-twitter"></i></Link></li>
                                         <li><Link to="https://www.youtube.com/c/muchecodotcom" target='_blank'><i className="fab fa-youtube"></i></Link></li>
@@ -618,7 +714,7 @@ function ServiceDetails(props) {
                             <div className="col-lg-7">
                                 <div className="contact-wrapper mb-50 wow fadeInRight">
                                     <form className="contact-form" onSubmit={handleSubmit}>
-                                        {(isSuccess.status == 1) ? (<p className='success_message'>{isSuccess.message}</p>) : null}
+                                        {showMessage ? (<p className='success_message'>{isSuccess.message} Our team will be in touch with you shortly.</p>) : null}
                                         <div className="row">
                                             <div className="col-lg-6 col-md-6 col-sm-12">
                                                 <div className="form_group">

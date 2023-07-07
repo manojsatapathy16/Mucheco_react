@@ -3,7 +3,7 @@ import './style.css';
 import { CallApi_Without_Token } from '../../Services/Client';
 import { API } from '../../Services/Apis';
 
-function Firstcome() {
+function Firstcome(props) {
   
   const inputs={Name:'',Email:'',Phone:'',Message:''};
   const [inputData,setinputData]=useState(inputs);
@@ -16,12 +16,13 @@ const fetchInfo = async () => {
     formdata.append("first_name", inputData.Name);
     formdata.append("email", inputData.Email);
     formdata.append("phone", inputData.Phone);
-    formdata.append("message", inputData.Phone);
+    formdata.append("message", inputData.Message);
     const data = await CallApi_Without_Token('POST', API.CONTACT_US, formdata)
     // setLoading(false)
     if (data.status === 1) {
         setIsModalOpen(false)
         sessionStorage.setItem('notshowagain',1);
+        props.message(1);
     } else {
         setIsModalOpen(true)
     }
@@ -70,7 +71,7 @@ const fetchInfo = async () => {
             <input type="text" name='Phone' placeholder='Enter Your Number' value={inputData.Phone}
           onChange={inputHandleChange}/>
             </div>
-            <div class="">
+            <div>
             {/* <label htmlFor="">Message</label> */}
               <textarea name="Message" placeholder="Message" value={inputData.Message} onChange={inputHandleChange}></textarea>
               </div>

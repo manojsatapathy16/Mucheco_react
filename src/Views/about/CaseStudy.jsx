@@ -30,10 +30,10 @@ function CaseStudy(props) {
         }
     }
 
-    const readmoreHandler = (e) => {
-        const clickedId = e.target.id;
+    const readmoreHandler = (id) => {
+        // const clickedId = e.target.id;
     
-        navigate('/about/case-study/caseStudy-details', { state: { id: clickedId } });
+        navigate('/caseStudy-details', { state: { id } });
     }
 
     return (
@@ -75,7 +75,7 @@ function CaseStudy(props) {
                                                     </div>
                                                 <div className="case-content">
                                                     <div className="p-icon">
-                                                        <span onClick={readmoreHandler} id={each.id}><i aria-hidden="true" className="fas fa-arrow-right"></i> </span>
+                                                        <span onClick={()=>readmoreHandler(each.id)} id={each.id}><i aria-hidden="true" className="fas fa-arrow-right"></i> </span>
                                                     </div>
 
                                                     <h3 className="p-title">

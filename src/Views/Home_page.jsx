@@ -88,14 +88,14 @@ function Home_page(props) {
     
     const homeBlogHandler = (each) => {
         const slug=each.slug;
-        navigate(`/insight/${slug}`);
+        navigate(`/${slug}`);
     }
 
-    const readmoreHandler = (e) => {
-        const clickedId = e.target.id;
-        console.log(clickedId,'homepage----------')
+    const readmoreHandler = (id) => {
+        // const clickedId = e.target.id;
+        // console.log(clickedId,'homepage----------')
       
-        navigate('/about/case-study/caseStudy-details', { state: { id: clickedId } });
+        navigate('/caseStudy-details', { state: { id } });
     }
 
     // aos initilize start
@@ -239,7 +239,7 @@ function Home_page(props) {
                                     <img src={require("../image/icon-2.png")} alt="" />
                                 </div>
                                 <div className="text">
-                                    <h3 className="text-underline"><Link to="/service/inventory-management">Multichannel Management</Link></h3>
+                                    <h3 className="text-underline"><Link to="/inventory-management">Multichannel Management</Link></h3>
                                     <p>We enable seamless communication and coordination across various channels with omnichannel integration.
                                     </p>
                                     {/* <!-- <Link to="#" className="red-dark">Read More</Link> --> */}
@@ -252,7 +252,7 @@ function Home_page(props) {
                                     <img src={require("../image/icon-3.png")} alt="" />
                                 </div>
                                 <div className="text">
-                                    <h3 className="text-underline"><Link to="/service/discovery-and-design">Development and Support</Link></h3>
+                                    <h3 className="text-underline"><Link to="/discovery-and-design">Development and Support</Link></h3>
                                     <p>We offer end-to-end software development and maintenance services with agile methodologies.
                                     </p>
                                     {/* <!-- <Link to="#" className="red-dark">Read More</Link> --> */}
@@ -265,7 +265,7 @@ function Home_page(props) {
                                     <img src={require("../image/icon-4.png")} alt="" />
                                 </div>
                                 <div className="text">
-                                    <h3 className="text-underline"><Link to="/service/search-engine-optimization">Digital Marketing</Link></h3>
+                                    <h3 className="text-underline"><Link to="/search-engine-optimization">Digital Marketing</Link></h3>
                                     <p>Our data-driven approach to SEO, PPC, and SMM helps to increase online visibility.
                                     </p>
                                     {/* <!-- <Link to="#" className="red-dark">Read More</Link> --> */}
@@ -298,48 +298,17 @@ function Home_page(props) {
                                             <div className="case_study_img_wrap">
                                             <img src={each.card_image} alt="" width="100%" />
                                             </div>
-                                            <div className="case_img_overtxt" onClick={readmoreHandler} id={each.id}>
+                                            <div className="case_img_overtxt" onClick={()=>readmoreHandler(each.id)} id={each.id}>
                                                 <div className="case_img_overtxt_details" >
-                                                    <h3 onClick={readmoreHandler} id={each.id}>{each.site_name}</h3>
-                                                    <p onClick={readmoreHandler} id={each.id}>{each.site_work}</p>
+                                                    <h3 onClick={()=>readmoreHandler(each.id)} id={each.id}>{each.site_name}</h3>
+                                                    <p onClick={()=>readmoreHandler(each.id)} id={each.id}>{each.site_work}</p>
                                                 </div>
                                             </div>
                                         </div>
                                     )
                                 })}
                             </> : null}
-                            {/* <div className="item" onClick={readmoreHandler} id={each.id}>
-                                <img src={require("../image/case-study/uk_pallet.jpg")} alt="" width="100%" />
-                                <div className="case_img_overtxt">
-                                    <div className="case_img_overtxt_details">
-                                        <p>UK Pallet Commercial Delivery</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <img src={require("../image/case_study_item2.jpg")} alt="" width="100%" />
-                                <div className="case_img_overtxt">
-                                    <div className="case_img_overtxt_details">about image2</div>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <img src={require("../image/case_study_item3.jpg")} alt="" width="100%" />
-                                <div className="case_img_overtxt">
-                                    <div className="case_img_overtxt_details">about image3</div>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <img src={require("../image/case_study_item1.jpg")} alt="" width="100%" />
-                                <div className="case_img_overtxt">
-                                    <div className="case_img_overtxt_details">about image1</div>
-                                </div>
-                            </div>
-                            <div className="item">
-                                <img src={require("../image/case_study_item2.jpg")} alt="" width="100%" />
-                                <div className="case_img_overtxt">
-                                    <div className="case_img_overtxt_details">about image2</div>
-                                </div>
-                            </div> */}
+                            
                         </OwlCarousel>
                     </div>
                     {/* <!-- Slider END --> */}

@@ -76,11 +76,11 @@ function Footer() {
                         <div className="widget footer-nav-widget wow fadeInUp" data-aos="fade-up" data-aos-duration="500">
                             <h4 className="widget-title">About Us</h4>
                             <ul className="footer-nav list-style-dot">
-                                <li><NavLink to="/about/why-choose-us"> Why Choose Us</NavLink></li>
-                                        <li><NavLink to="/about/our-delivery-process"> Our Delivery Process</NavLink></li>
-                                        <li><NavLink to="/about/some-of-our-work"> Some of Our Work</NavLink></li>
-                                        <li><NavLink to="/about/case-study"> Case Study</NavLink></li>
-                                        <li><NavLink to="/about/career"> Career</NavLink></li>
+                                <li><NavLink to="/why-choose-us"> Why Choose Us</NavLink></li>
+                                        <li><NavLink to="/our-delivery-process"> Our Delivery Process</NavLink></li>
+                                        <li><NavLink to="/some-of-our-work"> Some of Our Work</NavLink></li>
+                                        <li><NavLink to="/case-study"> Case Study</NavLink></li>
+                                        <li><NavLink to="/career"> Career</NavLink></li>
                                         <li><NavLink to="/faq"> FAQ</NavLink></li>
                             </ul>
                         </div>
@@ -124,7 +124,7 @@ function Footer() {
                     <div className="col-md-5">
                         <ul className="social-link">
                             <li><Link to="https://www.facebook.com/muchecodotcom" target='_blank'><i className="fab fa-facebook-f"></i></Link></li>
-                            {/* <li><a to="#"><i className="fab fa-instagram"></i></a></li> */}
+                            <li><Link to="https://www.instagram.com/mucheco_ltd/"><i className="fab fa-instagram"></i></Link></li>
                             <li><Link to="https://twitter.com/muchecodotcom" target='_blank'><i className="fab fa-twitter"></i></Link></li>
                             <li><Link to="https://www.linkedin.com/company/mucheco" target='_blank'><i className="fab fa-linkedin"></i></Link></li>
                             <li><Link to="https://www.youtube.com/c/muchecodotcom" target='_blank'><i className='fab fa-youtube'></i></Link></li>

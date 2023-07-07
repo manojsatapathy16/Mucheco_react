@@ -21,25 +21,6 @@ function Career(props) {
                 <meta name="keywords" content={metaData?.data?.meta_keyword} />
             </Helmet>
 
-    {/* <!--====== Start Hero Section ======--> */}
-        {/* <section className="hero-area">
-            <div className="breadcrumbs-wrapper bg_cover">
-                <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="col-lg-8">
-                            <div className="page-title-text text-center">
-                                <h1 className="title">Career</h1>
-                                <ul className="breadcrumbs-link">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li className="active">Career</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> */}
-        {/* <!--====== End Hero Section ======--> */}
         {/* <!--====== Start Features Section ======--> */}
         <section className="features-area features-style-four pt-60">
             <div className="container">

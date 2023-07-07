@@ -155,11 +155,43 @@ function WhychooseUs(props) {
     </section>
     {/* <!--====== end mission & Vission Section ======--> */}
 
+    <section className="How_can_we_help pt-60 pb-60">
+        <div className="container ">
+            <div className="section-title text-center mb-25 wow fadeInUp">
+                <div className="row justify-content-center">
+                    <div className="col-md-6">
+                        <span className="sub-title sub-title-bg blue-light-bg">How can we help?</span>
+                        <h2 className="">We plan to delight customers by providing services in the following areas</h2>
+                    </div>
+                </div>
+               
+            </div>
+          
+            <section className="faq-area about_acordion pt-50 pb-50">
+                <div className="container">
+                    <div className="row">
+                       <div className="col-lg-12">
+                       <ul className="check-list list-circle-bg mb-20 wow fadeInUp aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000">
+                                        {/* {Array.isArray(consultancyData?.data?.market_place?.lis) ? <>
+                                            {consultancyData?.data?.market_place?.lis?.map((each, key) => <li>{each}</li>)}
+                                        </> : null} */}
+                                        <li>Branding, concept and business plan development for eCommerce businesses.</li>
+                                        <li>eCommerce website design Magento/Shopify, custom web development using platforms such as Laravel.</li>
+                                        <li>Systems implementation, integration and design. This incorporates Mucheco’s multichannel system. (How many users are using this platform successfully?)</li>
+                                        <li>Development of fully serviced plugins for partners including Laravel, Magento, Shopify, BigCommerce and their customers</li>
+                                        <li>Managed services and data optimisation</li>
+                                        <li>Salesforce CRM customisation and delivery for eCommerce and non-eCommerce based situations</li>
+                                      
 
-    {/* <!--====== our customer Section start ======--> */}
-    {ourCustomerDataErr?<OurCustomer isOurCustomerErr={setIsourCustomerDataErr}/>:null}
-    
-    {/* <!--====== our customer Section start ======--> */}
+                                    </ul>
+                       </div>
+                    </div>
+                </div>
+            </section>
+           
+        </div>
+    </section>
+
 
 
     {/* <!--====== Start Testimonial Section ======--> */}
@@ -189,6 +221,10 @@ function WhychooseUs(props) {
 </section>:null}
   
     {/* <!--====== End Testimonial Section ======--> */}
+        {/* <!--====== our customer Section start ======--> */}
+        {ourCustomerDataErr?<OurCustomer isOurCustomerErr={setIsourCustomerDataErr}/>:null}
+    
+    {/* <!--====== our customer Section start ======--> */}
     </div>
     <Outlet />
     </>
